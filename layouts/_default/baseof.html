@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Params.description | default .Site.Title }}">
+  <meta name="description" content="{{ site.Params.description | default site.Title }}">
   <meta name="theme-color" content="#121212">
-  <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  <title>{{ block "title" . }}{{ .Title }} - {{ site.Title }}{{ end }}</title>
   
   <!-- Winamp + Glitchpunk CSS -->
   <style>
@@ -846,32 +846,32 @@
   <!-- Winamp Window Overlay -->
   <div class="winamp-window">
     <div class="winamp-title-bar">
-      <span class="winamp-title-bar-text">{{ .Site.Title }}</span>
+      <span class="winamp-title-bar-text">{{ site.Title }}</span>
       <div class="winamp-window-controls">
-        <a href="{{ .Site.BaseURL }}" class="control close" title="Home">X</a>
-        <a href="{{ .Site.BaseURL }}about/" class="control minimize" title="About">_</a>
+        <a href="{{ site.BaseURL }}" class="control close" title="Home">X</a>
+        <a href="{{ site.BaseURL }}about/" class="control minimize" title="About">_</a>
         <span class="control maximize">[]</span>
       </div>
     </div>
     <div class="winamp-menu-bar">
-      <a href="{{ .Site.BaseURL }}" class="menu-item" id="menu-home">
+      <a href="{{ site.BaseURL }}" class="menu-item" id="menu-home">
         {{ if eq .Lang "uk" }}Головна{{ else }}Home{{ end }}
       </a>
-      <a href="{{ .Site.BaseURL }}about/" class="menu-item" id="menu-about">
+      <a href="{{ site.BaseURL }}about/" class="menu-item" id="menu-about">
         {{ if eq .Lang "uk" }}Про сайт{{ else }}About{{ end }}
       </a>
-      <a href="{{ .Site.BaseURL }}posts/" class="menu-item" id="menu-blog">
+      <a href="{{ site.BaseURL }}posts/" class="menu-item" id="menu-blog">
         {{ if eq .Lang "uk" }}Блог{{ else }}Blog{{ end }}
       </a>
-      <span class="menu-item" style="margin-left: auto;">{{ .Site.Params.tagline | default "" }}</span>
+      <span class="menu-item" style="margin-left: auto;">{{ site.Params.tagline | default "" }}</span>
     </div>
     <div class="winamp-border"></div>
   </div>
   
   <!-- Language Switcher -->
   <div class="lang-switcher">
-    <a href="{{ .Site.BaseURL }}" class="lang-link{{ if eq .Lang "uk" }} active{{ end }}" hreflang="uk">UA</a>
-    <a href="{{ .Site.BaseURL }}en/" class="lang-link{{ if eq .Lang "en" }} active{{ end }}" hreflang="en">EN</a>
+    <a href="{{ site.BaseURL }}" class="lang-link{{ if eq .Lang "uk" }} active{{ end }}" hreflang="uk">UA</a>
+    <a href="{{ site.BaseURL }}en/" class="lang-link{{ if eq .Lang "en" }} active{{ end }}" hreflang="en">EN</a>
   </div>
   
   <!-- VHS Overlay -->
@@ -885,13 +885,13 @@
     <header class="site-header">
       <div class="site-logo">
         {{/* Logo will be added via content or partial */}}
-        {{ with .Site.Params.logo }}
-          <img src="{{ . | relURL }}" alt="{{ .Site.Title }}" width="200">
+        {{ with site.Params.logo }}
+          <img src="{{ . | relURL }}" alt="{{ site.Title }}" width="200">
         {{ end }}
       </div>
-      <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-      {{ with .Site.Params.tagline }}<p class="site-tagline">{{ . }}</p>{{ end }}
-      {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+      <h1><a href="{{ site.BaseURL }}">{{ site.Title }}</a></h1>
+      {{ with site.Params.tagline }}<p class="site-tagline">{{ . }}</p>{{ end }}
+      {{ with site.Params.description }}<p>{{ . }}</p>{{ end }}
       <div class="equalizer-container">
         <div class="equalizer">
           <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
@@ -911,7 +911,7 @@
       <p>{{ if eq .Lang "uk" }}Тут ви знайдете огляди, поради та історії з ігор.{{ else }}Here you will find reviews, tips and game stories.{{ end }}</p>
       <p>{{ if eq .Lang "uk" }}Приєднуйтесь до нашої спільноти сьогодні!{{ else }}Join our community today!{{ end }}</p>
     </div>
-    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. {{ if eq .Lang "uk" }}Побудовано за допомогою{{ else }}Built with{{ end }} <a href="https://gohugo.io">Hugo</a>.</p>
+    <p>&copy; {{ now.Format "2006" }} {{ site.Title }}. {{ if eq .Lang "uk" }}Побудовано за допомогою{{ else }}Built with{{ end }} <a href="https://gohugo.io">Hugo</a>.</p>
     <p class="tags">
       <span style="color: var(--neon-purple);">TTRPG</span> | 
       <span style="color: var(--neon-cyan);">Hobby</span> | 
