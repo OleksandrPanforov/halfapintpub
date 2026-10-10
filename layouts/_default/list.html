@@ -22,7 +22,7 @@
               <article>
                 <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
                 {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
-                <p>{{ .Summary | default .Description | trunc 200 }}</p>
+                <p>{{ .Summary | default .Description | safeHTML }}</p>
                 <p><a href="{{ .RelPermalink }}" class="winamp-btn">Read More</a></p>
               </article>
             {{ end }}
