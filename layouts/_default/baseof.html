@@ -19,30 +19,29 @@
       </div>
       <span class="winamp-title-bar-text">{{ site.Title }}</span>
       <div class="winamp-window-controls">
-        <a href="{{ site.BaseURL }}" class="control close" title="Home">X</a>
-        <a href="{{ site.BaseURL }}about/" class="control minimize" title="About">_</a>
+        <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}{{ else }}{{ site.BaseURL }}en/{{ end }}" class="control close" title="Home">X</a>
+        <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}about/{{ else }}{{ site.BaseURL }}en/about/{{ end }}" class="control minimize" title="About">_</a>
         <span class="control maximize">[]</span>
       </div>
     </div>
     <div class="winamp-menu-bar">
-      <a href="{{ site.BaseURL }}" class="menu-item" id="menu-home">
+      <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}{{ else }}{{ site.BaseURL }}en/{{ end }}" class="menu-item" id="menu-home">
         {{ if eq .Lang "uk" }}Головна{{ else }}Home{{ end }}
       </a>
-      <a href="{{ site.BaseURL }}about/" class="menu-item" id="menu-about">
+      <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}about/{{ else }}{{ site.BaseURL }}en/about/{{ end }}" class="menu-item" id="menu-about">
         {{ if eq .Lang "uk" }}Про сайт{{ else }}About{{ end }}
       </a>
-      <a href="{{ site.BaseURL }}posts/" class="menu-item" id="menu-blog">
+      <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}posts/{{ else }}{{ site.BaseURL }}en/posts/{{ end }}" class="menu-item" id="menu-blog">
         {{ if eq .Lang "uk" }}Блог{{ else }}Blog{{ end }}
       </a>
+      <!-- Language Switcher inside menu bar -->
+      <div class="lang-switcher">
+        <a href="{{ if eq .Lang "en" }}{{ site.BaseURL }}{{ else }}{{ site.BaseURL }}en/{{ end }}" class="lang-link{{ if eq .Lang "en" }} active{{ end }}" hreflang="en">EN</a>
+        <a href="{{ if eq .Lang "uk" }}{{ site.BaseURL }}{{ else }}{{ site.BaseURL }}uk/{{ end }}" class="lang-link{{ if eq .Lang "uk" }} active{{ end }}" hreflang="uk">UA</a>
+      </div>
       <span class="menu-item tagline-text" id="random-tagline"></span>
     </div>
     <div class="winamp-border"></div>
-  </div>
-  
-  <!-- Language Switcher -->
-  <div class="lang-switcher">
-    <a href="{{ site.BaseURL }}" class="lang-link{{ if eq .Lang "uk" }} active{{ end }}" hreflang="uk">UA</a>
-    <a href="{{ site.BaseURL }}en/" class="lang-link{{ if eq .Lang "en" }} active{{ end }}" hreflang="en">EN</a>
   </div>
   
   <!-- VHS Overlay -->

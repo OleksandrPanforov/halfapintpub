@@ -200,6 +200,34 @@ body {
   z-index: 999;
 }
 
+/* Language Switcher in menu bar */
+.winamp-menu-bar .lang-switcher {
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+.winamp-menu-bar .lang-switcher a {
+  padding: 2px 6px;
+  color: var(--chrome-dark);
+  text-decoration: none;
+  background: var(--chrome-medium);
+  border: 1px solid var(--chrome-dark);
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  font-size: 11px;
+}
+
+.winamp-menu-bar .lang-switcher a:hover {
+  background: var(--chrome-light);
+  color: var(--neon-cyan);
+}
+
+.winamp-menu-bar .lang-switcher a.active {
+  background: var(--neon-cyan);
+  color: black;
+  font-weight: bold;
+}
+
 .winamp-menu-bar .menu-item {
   padding: 4px 12px;
   font-family: var(--font-ui);
@@ -245,7 +273,7 @@ body {
 
 /* Tagline in menu bar */
 .tagline-text {
-  margin-left: auto;
+  margin-left: 0;
   font-size: 11px;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -253,39 +281,6 @@ body {
 
 .tagline-text.visible {
   opacity: 1;
-}
-
-/* Language Switcher */
-.lang-switcher {
-  position: absolute;
-  top: 32px;
-  right: 12px;
-  z-index: 1001;
-  display: flex;
-  gap: 4px;
-  font-family: var(--font-ui);
-  font-size: 11px;
-}
-
-.lang-switcher a {
-  padding: 2px 8px;
-  color: var(--chrome-dark);
-  text-decoration: none;
-  background: var(--chrome-medium);
-  border: 1px solid var(--chrome-dark);
-  border-radius: 3px;
-  transition: all 0.2s ease;
-}
-
-.lang-switcher a:hover {
-  background: var(--chrome-light);
-  color: var(--neon-cyan);
-}
-
-.lang-switcher a.active {
-  background: var(--neon-cyan);
-  color: black;
-  font-weight: bold;
 }
 
 /* === Layout === */
@@ -514,6 +509,15 @@ article p + p {
   margin-top: 1rem;
 }
 
+/* Hide Read More button if post content is short */
+article .read-more-container {
+  margin-top: 1rem;
+}
+
+article.has-full-content .read-more-container {
+  display: none;
+}
+
 /* === Main Content === */
 main {
   display: grid;
@@ -709,6 +713,15 @@ main {
   font-size: 0.9em;
 }
 
+/* About page image styling */
+.about-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(157, 0, 255, 0.3);
+  margin: 1rem 0;
+}
+
 /* === Responsive Design === */
 @media (max-width: 768px) {
   .winamp-title-bar {
@@ -735,14 +748,12 @@ main {
     font-size: 10px;
   }
   
-  .lang-switcher {
-    top: 24px;
-    right: 6px;
-    font-size: 10px;
+  .winamp-menu-bar .lang-switcher {
+    margin-right: 6px;
   }
   
-  .lang-switcher a {
-    padding: 2px 6px;
+  .winamp-menu-bar .lang-switcher a {
+    padding: 2px 5px;
     font-size: 9px;
   }
   

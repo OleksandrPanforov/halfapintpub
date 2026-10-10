@@ -9,12 +9,17 @@
       {{ if $posts }}
         <section class="posts">
           {{ range $posts }}
-            <article>
+            {{ $hasMore := ne .Summary .Content }}
+            <article class="{{ if not $hasMore }}has-full-content{{ end }}">
               <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
               {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>{{ end }}
               {{ with .Summary }}<p>{{ . }}</p>{{ end }}
               {{ with .Description }}<p>{{ . }}</p>{{ end }}
-              <p><a href="{{ .RelPermalink }}" class="winamp-btn">{{ i18n "read_more" | default "Read More" }}</a></p>
+              {{ if $hasMore }}
+                <div class="read-more-container">
+                  <a href="{{ .RelPermalink }}" class="winamp-btn">{{ i18n "read_more" | default "Read More" }}</a>
+                </div>
+              {{ end }}
             </article>
           {{ end }}
         </section>
