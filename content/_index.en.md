@@ -4,4 +4,4 @@ language: en
 draft: false
 ---
 
-{{/* Logo is handled in baseof.html */}}
+Welcome to **Half Pint Pub** – your guide to the world of tabletop games!

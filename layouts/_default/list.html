@@ -1,13 +1,14 @@
-{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+{{ define "title" }}{{ .Title }} - {{ site.Title }}{{ end }}
 
 {{ define "main" }}
   <main>
     {{ .Content }}
     
-    {{ if .Site.Pages }}
-      <section class="posts">
-        {{ range .Site.Pages }}
-          {{ if ne .Kind "page" }}
+    {{ with .Site.GetPage "section" "posts" }}
+      {{ $posts := .Pages }}
+      {{ if $posts }}
+        <section class="posts">
+          {{ range $posts }}
             <article>
               <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
               {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>{{ end }}
@@ -16,8 +17,12 @@
               <p><a href="{{ .RelPermalink }}" class="winamp-btn">{{ i18n "read_more" | default "Read More" }}</a></p>
             </article>
           {{ end }}
-        {{ end }}
-      </section>
+        </section>
+      {{ end }}
+    {{ end }}
+    
+    {{ if eq .Kind "page" }}
+      {{/* For about page, just show the content */}}
     {{ end }}
   </main>
 {{ end }}

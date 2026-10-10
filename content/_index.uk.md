@@ -4,4 +4,4 @@ language: uk
 draft: false
 ---
 
-{{/* Logo is handled in baseof.html */}}
+Вітаємо у **Half Pint Pub** – вашому провіднику у світ настільних ігор!
