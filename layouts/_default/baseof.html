@@ -104,10 +104,6 @@
       z-index: 1000;
     }
     
-    .winamp-window * {
-      pointer-events: auto;
-    }
-    
     .winamp-title-bar {
       position: absolute;
       top: 0;
@@ -208,9 +204,6 @@
       z-index: 999;
     }
     
-    .winamp-menu-bar * {
-      pointer-events: auto;
-    }
     
     .winamp-menu-bar .menu-item {
       padding: 4px 12px;
@@ -578,7 +571,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      pointer-events: none;
+      pointer-events: auto;
       z-index: -1;
       background: 
         radial-gradient(ellipse at 15% 25%, rgba(157, 0, 255, 0.08) 0%, transparent 50%),
@@ -608,7 +601,7 @@
         var(--neon-cyan));
       opacity: 0.5;
       animation: glitch-bar 6s infinite;
-      pointer-events: none;
+      pointer-events: auto;
       z-index: 999;
     }
     

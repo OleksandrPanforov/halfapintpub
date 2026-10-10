@@ -1,6 +1,5 @@
 ---
 title: "About halfapintpub"
-date: 2024-10-10
 ---
 
 ## What is halfapintpub?
