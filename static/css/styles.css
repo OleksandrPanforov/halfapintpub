@@ -1,54 +1,61 @@
 /* ========================================
-   Winamp + Glitchpunk Theme for Half Pint Pub
+   Winamp Iconic + Logo Color Scheme for Half Pint Pub
+   Inspired by Winamp 5.9 iconic skin with logo purple/cyan
    ======================================== */
 
 :root {
-  /* === Winamp Color Palette === */
-  --bg-dark: #121212;
-  --bg-darker: #0a0a0a;
-  --chrome-light: #c0c0c0;
-  --chrome-medium: #808080;
-  --chrome-dark: #404040;
+  /* === Winamp Iconic Chrome Palette === */
+  --chrome-silver: #e0e0e0;
+  --chrome-medium: #a0a0a0;
+  --chrome-dark: #606060;
+  --chrome-black: #202020;
   
-  /* === Neon Accents (Winamp LCD) === */
-  --neon-purple: #9d00ff;
-  --neon-cyan: #00ffff;
-  --neon-pink: #ff2ced;
-  --neon-green: #00ff41;
-  --neon-orange: #ff6b00;
-  --neon-yellow: #ffff00;
+  /* === Logo-Inspired Neon Palette === */
+  --logo-purple: #8a2be2;
+  --logo-cyan: #00b7eb;
+  --logo-pink: #ff69b4;
+  --logo-gold: #ffd700;
+  --logo-deep-purple: #4b0082;
+  
+  /* === Accent Colors (Winamp LCD Green + Logo) === */
+  --accent-green: #00ff00;
+  --accent-orange: #ff6b00;
   
   /* === Dark Theme === */
-  --bg: var(--bg-dark);
-  --card-bg: #1e1e1e;
-  --text: #e0e0e0;
-  --text-muted: #808080;
-  --border: #404040;
-  --shadow: rgba(0, 0, 0, 0.5);
-  --link-color: var(--neon-cyan);
-  --link-hover: var(--neon-purple);
+  --bg: var(--chrome-black);
+  --bg-darker: #101010;
+  --card-bg: #1a1a1a;
+  --text: #ffffff;
+  --text-muted: #a0a0a0;
+  --border: var(--chrome-dark);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --link-color: var(--logo-cyan);
+  --link-hover: var(--logo-purple);
   
-  /* Fonts */
+  /* === Pixel Grid === */
+  --pixel-size: 4px;
+  
+  /* Fonts - Sharper, more geometric */
   --font-display: 'Orbitron', 'Courier New', monospace;
   --font-body: 'Courier New', monospace;
-  --font-ui: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-ui: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Light theme override */
 [data-theme="light"] {
-  --bg: #f0f0f0;
+  --bg: #f8f8f8;
+  --bg-darker: #e8e8e8;
   --card-bg: #ffffff;
-  --text: #121212;
+  --text: #101010;
   --text-muted: #606060;
-  --border: #c0c0c0;
+  --border: var(--chrome-medium);
   --shadow: rgba(0, 0, 0, 0.1);
-  --bg-dark: #e0e0e0;
-  --bg-darker: #d0d0d0;
-  --chrome-light: #404040;
+  --chrome-silver: #404040;
   --chrome-medium: #808080;
-  --chrome-dark: #c0c0c0;
+  --chrome-dark: #a0a0a0;
+  --chrome-black: #e0e0e0;
   --link-color: #0066cc;
-  --link-hover: #9d00ff;
+  --link-hover: var(--logo-purple);
 }
 
 * { 
@@ -57,7 +64,7 @@
   box-sizing: border-box; 
 }
 
-/* === CRT/Glitch Effects === */
+/* === CRT/Glitch Effects - More Aggressive === */
 html {
   min-height: 100vh;
   background: var(--bg);
@@ -65,8 +72,8 @@ html {
     linear-gradient(var(--bg-darker), var(--bg-darker)),
     repeating-linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.1) 0px,
-      rgba(0, 0, 0, 0.1) 1px,
+      rgba(0, 0, 0, 0.2) 0px,
+      rgba(0, 0, 0, 0.2) 1px,
       transparent 1px,
       transparent 2px
     );
@@ -85,7 +92,7 @@ body {
   animation: crt-flicker 8s infinite;
 }
 
-/* === Winamp Window Frame === */
+/* === Winamp Window Frame - More Iconic === */
 .winamp-window {
   position: fixed;
   top: 0;
@@ -100,19 +107,19 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 32px;
-  background: linear-gradient(180deg, var(--chrome-light) 0%, var(--chrome-medium) 100%);
+  height: 28px;
+  background: linear-gradient(180deg, var(--chrome-silver) 0%, var(--chrome-medium) 100%);
   border-bottom: 2px solid var(--chrome-dark);
   display: flex;
   align-items: center;
   padding: 0 12px;
   gap: 12px;
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   color: var(--chrome-dark);
-  text-shadow: 1px 1px 0 var(--chrome-light);
-  box-shadow: 0 0 10px rgba(157, 0, 255, 0.2);
+  text-shadow: 1px 1px 0 var(--chrome-silver);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
 }
 
 .winamp-title-bar::before {
@@ -125,7 +132,9 @@ body {
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--chrome-dark);
-  box-shadow: 0 0 8px var(--neon-purple);
+  box-shadow: 
+    0 0 10px var(--logo-purple),
+    inset 0 0 10px var(--logo-cyan);
 }
 
 .winamp-logo img {
@@ -139,6 +148,7 @@ body {
   flex: 1;
   text-align: center;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .winamp-window-controls {
@@ -159,45 +169,57 @@ body {
   border: 1px solid var(--chrome-dark);
   background: var(--chrome-medium);
   color: var(--chrome-dark);
-  box-shadow: inset 0 1px 0 var(--chrome-light);
+  box-shadow: 
+    inset 0 1px 0 var(--chrome-silver),
+    0 0 6px rgba(138, 43, 226, 0.5);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .winamp-window-controls .control:hover {
   transform: scale(1.1);
+  box-shadow: 
+    inset 0 1px 0 var(--chrome-silver),
+    0 0 10px var(--logo-purple);
 }
 
 .winamp-window-controls .control.close { 
-  background: var(--neon-pink); 
+  background: var(--logo-pink); 
   color: white; 
-  box-shadow: 0 0 6px var(--neon-pink);
+  box-shadow: 
+    inset 0 1px 0 var(--chrome-silver),
+    0 0 8px var(--logo-pink);
 }
 .winamp-window-controls .control.minimize { 
-  background: var(--neon-cyan); 
+  background: var(--logo-cyan); 
   color: black; 
-  box-shadow: 0 0 6px var(--neon-cyan);
+  box-shadow: 
+    inset 0 1px 0 var(--chrome-silver),
+    0 0 8px var(--logo-cyan);
 }
 .winamp-window-controls .control.maximize { 
-  background: var(--neon-orange); 
-  color: white; 
-  box-shadow: 0 0 6px var(--neon-orange);
+  background: var(--accent-green); 
+  color: black; 
+  box-shadow: 
+    inset 0 1px 0 var(--chrome-silver),
+    0 0 8px var(--accent-green);
 }
 
-/* Menu Bar */
+/* Menu Bar - More Geometric */
 .winamp-menu-bar {
   position: absolute;
-  top: 32px;
+  top: 28px;
   left: 0;
   right: 0;
   height: 28px;
-  background: linear-gradient(180deg, var(--chrome-medium) 0%, var(--chrome-light) 100%);
+  background: linear-gradient(180deg, var(--chrome-medium) 0%, var(--chrome-silver) 100%);
   border-bottom: 1px solid var(--chrome-dark);
   display: flex;
   align-items: center;
   padding: 0 12px;
   gap: 4px;
   z-index: 999;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
 }
 
 /* Language Switcher in menu bar */
@@ -215,17 +237,20 @@ body {
   border-radius: 3px;
   transition: all 0.2s ease;
   font-size: 11px;
+  font-weight: 600;
 }
 
 .winamp-menu-bar .lang-switcher a:hover {
-  background: var(--chrome-light);
-  color: var(--neon-cyan);
+  background: var(--chrome-silver);
+  color: var(--logo-purple);
+  box-shadow: 0 0 6px var(--logo-purple);
 }
 
 .winamp-menu-bar .lang-switcher a.active {
-  background: var(--neon-cyan);
-  color: black;
+  background: var(--logo-cyan);
+  color: var(--chrome-black);
   font-weight: bold;
+  box-shadow: 0 0 8px var(--logo-cyan);
 }
 
 .winamp-menu-bar .menu-item {
@@ -240,25 +265,28 @@ body {
   border-radius: 3px;
   transition: all 0.2s ease;
   background: transparent;
+  font-weight: 600;
 }
 
 .winamp-menu-bar .menu-item:hover {
-  background: var(--chrome-light);
+  background: var(--chrome-silver);
   border-color: var(--chrome-dark);
-  color: var(--neon-purple);
-  text-shadow: 0 0 4px var(--neon-purple);
+  color: var(--logo-purple);
+  text-shadow: 0 0 6px var(--logo-purple);
 }
 
 .winamp-menu-bar .menu-item.active {
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  background: linear-gradient(135deg, var(--logo-purple), var(--logo-cyan));
   color: white;
-  border-color: var(--neon-purple);
-  box-shadow: 0 0 6px var(--neon-purple);
+  border-color: var(--logo-purple);
+  box-shadow: 
+    0 0 8px var(--logo-purple),
+    inset 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
 .winamp-border {
   position: absolute;
-  top: 60px;
+  top: 56px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -267,8 +295,8 @@ body {
   border-bottom: 2px solid var(--chrome-dark);
   border-radius: 0 0 8px 8px;
   box-shadow: 
-    inset 0 0 30px rgba(157, 0, 255, 0.05),
-    0 0 20px rgba(157, 0, 255, 0.15);
+    inset 0 0 40px rgba(138, 43, 226, 0.1),
+    0 0 25px rgba(138, 43, 226, 0.2);
 }
 
 /* Tagline in menu bar */
@@ -277,36 +305,60 @@ body {
   font-size: 11px;
   opacity: 0;
   transition: opacity 0.3s ease;
+  font-weight: 600;
 }
 
 .tagline-text.visible {
   opacity: 1;
 }
 
-/* === Layout === */
+/* === Layout - More Outlandish === */
 .page-container {
   max-width: 840px;
-  margin: 88px auto 2rem;
+  margin: 84px auto 2rem;
   padding: 2rem;
   position: relative;
   z-index: 10;
-  min-height: calc(100vh - 148px);
+  min-height: calc(100vh - 140px);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 
+    0 0 20px rgba(138, 43, 226, 0.15),
+    inset 0 0 30px rgba(138, 43, 226, 0.05);
 }
 
-/* === Header === */
+/* === Header - More Geometric === */
 .site-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--logo-purple);
   text-align: center;
+  position: relative;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--logo-purple), var(--logo-cyan), var(--logo-pink));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--logo-purple);
 }
 
 .site-header h1 {
   font-family: var(--font-display);
   font-size: 2rem;
-  color: var(--neon-cyan);
+  color: var(--logo-cyan);
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px var(--neon-cyan);
+  text-shadow: 
+    0 0 10px var(--logo-cyan),
+    2px 2px 0 var(--logo-purple);
+  letter-spacing: 2px;
 }
 
 .site-tagline {
@@ -317,7 +369,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* === Equalizer Animation === */
+/* === Equalizer Animation - More Winamp-like === */
 .equalizer-container {
   display: flex;
   justify-content: center;
@@ -333,18 +385,22 @@ body {
   gap: 4px;
   height: 32px;
   padding: 0 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(138, 43, 226, 0.1);
   border: 1px solid var(--chrome-dark);
   border-radius: 4px;
-  box-shadow: inset 0 0 10px rgba(157, 0, 255, 0.1);
+  box-shadow: 
+    inset 0 0 15px rgba(138, 43, 226, 0.2),
+    0 0 10px rgba(138, 43, 226, 0.1);
 }
 
 .equalizer .bar {
   width: 6px;
-  background: linear-gradient(180deg, var(--neon-purple), var(--neon-cyan));
+  background: linear-gradient(180deg, var(--logo-purple), var(--logo-cyan));
   border-radius: 2px;
   animation: equalizer 0.5s ease infinite alternate;
-  box-shadow: 0 0 4px var(--neon-purple);
+  box-shadow: 
+    0 0 6px var(--logo-purple),
+    0 0 4px var(--logo-cyan);
 }
 
 .equalizer .bar:nth-child(1) { height: 30%; animation-delay: 0s; }
@@ -367,7 +423,7 @@ body {
   100% { height: 100%; opacity: 0.7; }
 }
 
-/* === Winamp Button Style === */
+/* === Winamp Button Style - More Geometric === */
 .winamp-btn {
   display: inline-block;
   padding: 0.625rem 1.25rem;
@@ -378,34 +434,53 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: linear-gradient(135deg, var(--chrome-medium) 0%, var(--chrome-light) 100%);
+  background: linear-gradient(135deg, var(--chrome-medium) 0%, var(--chrome-silver) 100%);
   border: 2px solid;
-  border-color: var(--chrome-dark) var(--chrome-light) var(--chrome-light) var(--chrome-dark);
+  border-color: var(--chrome-dark) var(--chrome-silver) var(--chrome-silver) var(--chrome-dark);
   border-radius: 4px;
   box-shadow: 
     -2px -2px 0 var(--chrome-dark),
-    2px 2px 0 var(--chrome-light);
+    2px 2px 0 var(--chrome-silver);
   transition: all 0.2s ease;
+  position: relative;
+}
+
+.winamp-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 183, 235, 0.2));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.winamp-btn:hover::before {
+  opacity: 1;
 }
 
 .winamp-btn:hover {
-  border-color: var(--chrome-light) var(--chrome-dark) var(--chrome-dark) var(--chrome-light);
+  border-color: var(--chrome-silver) var(--chrome-dark) var(--chrome-dark) var(--chrome-silver);
   box-shadow: 
     2px 2px 0 var(--chrome-dark),
-    -2px -2px 0 var(--chrome-light);
+    -2px -2px 0 var(--chrome-silver);
   transform: translateY(-2px);
-  color: var(--neon-cyan);
+  color: var(--logo-cyan);
 }
 
 .winamp-btn:active {
   transform: translateY(1px);
   border-color: var(--chrome-dark);
   box-shadow: 
-    1px 1px 0 var(--chrome-light),
+    1px 1px 0 var(--chrome-silver),
     -1px -1px 0 var(--chrome-dark);
 }
 
-/* === Glitch Effect on Links === */
+/* === Glitch Effect on Links - More Intense === */
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -424,7 +499,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+  background: linear-gradient(90deg, var(--logo-purple), var(--logo-cyan));
   transition: width 0.3s ease;
 }
 
@@ -435,33 +510,35 @@ a:hover::after {
 /* RGB Split Glitch Effect */
 @keyframes rgb-split {
   0% { text-shadow: 0 0 0; }
-  20% { text-shadow: 3px 0 0 var(--neon-purple), -3px 0 0 var(--neon-cyan); }
-  40% { text-shadow: -3px 0 0 var(--neon-purple), 3px 0 0 var(--neon-cyan); }
-  60% { text-shadow: 0 3px 0 var(--neon-purple), 0 -3px 0 var(--neon-cyan); }
-  80% { text-shadow: 0 -3px 0 var(--neon-purple), 0 3px 0 var(--neon-cyan); }
+  20% { text-shadow: 3px 0 0 var(--logo-purple), -3px 0 0 var(--logo-cyan); }
+  40% { text-shadow: -3px 0 0 var(--logo-purple), 3px 0 0 var(--logo-cyan); }
+  60% { text-shadow: 0 3px 0 var(--logo-purple), 0 -3px 0 var(--logo-cyan); }
+  80% { text-shadow: 0 -3px 0 var(--logo-purple), 0 3px 0 var(--logo-cyan); }
   100% { text-shadow: 0 0 0; }
 }
 
-/* === Card/Article Style === */
+/* === Card/Article Style - More Geometric === */
 article, .card {
   background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: 2px solid var(--border);
+  border-radius: 0;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 
     0 4px 8px var(--shadow),
-    inset 0 0 20px rgba(157, 0, 255, 0.05);
+    inset 0 0 20px rgba(138, 43, 226, 0.05);
   position: relative;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid var(--logo-purple);
 }
 
 article:hover, .card:hover {
   transform: translateY(-2px);
   box-shadow: 
     0 6px 12px var(--shadow),
-    inset 0 0 30px rgba(157, 0, 255, 0.08);
+    inset 0 0 30px rgba(138, 43, 226, 0.1);
+  border-left-color: var(--logo-cyan);
 }
 
 article::before {
@@ -471,14 +548,16 @@ article::before {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+  background: linear-gradient(90deg, var(--logo-purple), var(--logo-cyan), var(--logo-pink));
 }
 
 article h2 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
-  color: var(--neon-cyan);
+  color: var(--logo-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 article h2 a {
@@ -524,11 +603,11 @@ main {
   gap: 1.5rem;
 }
 
-/* === Footer === */
+/* === Footer - More Geometric === */
 .site-footer {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  border-top: 2px solid var(--logo-purple);
   text-align: center;
   color: var(--text-muted);
   font-size: 0.875rem;
@@ -536,7 +615,7 @@ main {
 }
 
 .site-footer a {
-  color: var(--neon-cyan);
+  color: var(--logo-cyan);
 }
 
 .site-footer .tags {
@@ -546,6 +625,9 @@ main {
 
 .site-footer .tags span {
   margin: 0 0.5rem;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
 }
 
 /* SEO Footer Text */
@@ -563,7 +645,7 @@ main {
   margin: 0.5rem 0;
 }
 
-/* === Theme Toggle === */
+/* === Theme Toggle - More Iconic === */
 .theme-toggle {
   position: fixed;
   bottom: 24px;
@@ -589,6 +671,7 @@ main {
   box-shadow: 
     0 6px 0 var(--chrome-dark),
     inset 0 0 15px rgba(255, 255, 255, 0.3);
+  background: var(--chrome-silver);
 }
 
 .theme-toggle:active {
@@ -598,10 +681,10 @@ main {
 .theme-toggle svg {
   width: 26px;
   height: 26px;
-  fill: var(--neon-cyan);
+  fill: var(--logo-cyan);
 }
 
-/* === VHS Overlay === */
+/* === VHS Overlay - More Intense === */
 .vhs-overlay {
   position: fixed;
   top: 0;
@@ -611,41 +694,41 @@ main {
   pointer-events: none;
   z-index: -1;
   background: 
-    radial-gradient(ellipse at 15% 25%, rgba(157, 0, 255, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 75%, rgba(0, 255, 255, 0.08) 0%, transparent 50%);
-  animation: vhs-noise 20s infinite;
+    radial-gradient(ellipse at 15% 25%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(0, 183, 235, 0.15) 0%, transparent 50%);
+  animation: vhs-noise 25s infinite;
 }
 
 @keyframes vhs-noise {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.7; }
 }
 
-/* === Glitch Bar === */
+/* === Glitch Bar - More Visible === */
 .glitch-bar {
   position: fixed;
-  top: 60px;
+  top: 56px;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, 
     transparent, 
-    var(--neon-purple), 
-    var(--neon-cyan), 
-    var(--neon-pink), 
+    var(--logo-purple), 
+    var(--logo-cyan), 
+    var(--logo-pink), 
     transparent, 
-    var(--neon-purple), 
-    var(--neon-cyan));
-  opacity: 0.5;
-  animation: glitch-bar 6s infinite;
+    var(--logo-purple), 
+    var(--logo-cyan));
+  opacity: 0.7;
+  animation: glitch-bar 8s infinite;
   pointer-events: none;
   z-index: 999;
 }
 
 @keyframes glitch-bar {
   0% { transform: translateX(-100%); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
   100% { transform: translateX(100%); opacity: 0; }
 }
 
@@ -662,14 +745,14 @@ main {
 .content-body h5,
 .content-body h6 {
   font-family: var(--font-display);
-  color: var(--neon-cyan);
+  color: var(--logo-cyan);
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .content-body h2 {
   font-size: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--logo-purple);
   padding-bottom: 0.5rem;
 }
 
@@ -678,32 +761,33 @@ main {
 }
 
 .content-body blockquote {
-  border-left: 4px solid var(--neon-purple);
+  border-left: 4px solid var(--logo-purple);
   padding-left: 1rem;
   margin-left: 0;
   color: var(--text-muted);
   font-style: italic;
-  background: rgba(157, 0, 255, 0.05);
+  background: rgba(138, 43, 226, 0.05);
   padding: 1rem;
   border-radius: 0 4px 4px 0;
 }
 
 .content-body code {
-  background: rgba(0, 255, 255, 0.1);
+  background: rgba(0, 183, 235, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
   font-family: var(--font-body);
   font-size: 0.9em;
-  border: 1px solid var(--neon-cyan);
+  border: 1px solid var(--logo-cyan);
 }
 
 .content-body pre {
   background: var(--bg-darker);
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 0;
   overflow-x: auto;
   border: 1px solid var(--border);
   margin: 1rem 0;
+  border-left: 4px solid var(--logo-purple);
 }
 
 .content-body pre code {
@@ -717,9 +801,31 @@ main {
 .about-image {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(157, 0, 255, 0.3);
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
   margin: 1rem 0;
+  border: 2px solid var(--logo-purple);
+}
+
+/* === Pixel Grid Overlay === */
+.pixel-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -2;
+  background-image: 
+    linear-gradient(rgba(138, 43, 226, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px);
+  background-size: var(--pixel-size) var(--pixel-size);
+  opacity: 0.5;
+}
+
+/* === Sharp Corners for Geometric Feel === */
+.sharp-edges * {
+  border-radius: 0 !important;
 }
 
 /* === Responsive Design === */
@@ -829,7 +935,8 @@ main {
   .winamp-window,
   .theme-toggle,
   .vhs-overlay,
-  .glitch-bar {
+  .glitch-bar,
+  .pixel-grid {
     display: none !important;
   }
   
@@ -838,4 +945,11 @@ main {
     background: white;
     color: black;
   }
+}
+
+/* === Additional Pixel Art Elements === */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }

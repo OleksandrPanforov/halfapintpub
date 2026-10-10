@@ -4,13 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ site.Params.description | default site.Title }}">
-  <meta name="theme-color" content="#121212">
+  <meta name="theme-color" content="#202020">
   <title>{{ block "title" . }}{{ .Title }} - {{ site.Title }}{{ end }}</title>
   
   <!-- External CSS -->
   <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+  
+  <!-- Pixel Grid Overlay -->
+  <style>
+    .pixel-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: -2;
+      background-image: 
+        linear-gradient(rgba(138, 43, 226, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px);
+      background-size: 4px 4px;
+      opacity: 0.5;
+    }
+  </style>
 </head>
 <body>
+  <!-- Pixel Grid Background -->
+  <div class="pixel-grid"></div>
+  
   <!-- Winamp Window Overlay -->
   <div class="winamp-window">
     <div class="winamp-title-bar">
@@ -73,9 +94,9 @@
     </div>
     <p>&copy; {{ now.Format "2006" }} {{ site.Title }}. {{ if eq .Lang "uk" }}Побудовано за допомогою{{ else }}Built with{{ end }} <a href="https://gohugo.io">Hugo</a>.</p>
     <p class="tags">
-      <span style="color: var(--neon-purple);">TTRPG</span> | 
-      <span style="color: var(--neon-cyan);">Hobby</span> | 
-      <span style="color: var(--neon-pink);">Stuff</span>
+      <span style="color: var(--logo-purple);">TTRPG</span> | 
+      <span style="color: var(--logo-cyan);">Hobby</span> | 
+      <span style="color: var(--logo-pink);">Stuff</span>
     </p>
   </footer>
   
@@ -168,7 +189,7 @@
         const x = (Math.random() - 0.5) * 6;
         const y = (Math.random() - 0.5) * 4;
         randomEl.style.transform = `translate(${x}px, ${y}px)`;
-        randomEl.style.boxShadow = `0 0 15px rgba(157, 0, 255, 0.5)`;
+        randomEl.style.boxShadow = `0 0 15px rgba(138, 43, 226, 0.5)`;
         setTimeout(() => {
           randomEl.style.transform = '';
           randomEl.style.boxShadow = '';
