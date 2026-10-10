@@ -1,6 +1,7 @@
 baseURL = "https://halfapintpub.com/"
 title = "halfapintpub"
 languageCode = "en-us"
+publishDir = "public"
 
 # Minimal Hugo setup with default template
 theme = ""

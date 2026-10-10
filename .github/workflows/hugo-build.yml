@@ -28,7 +28,7 @@ jobs:
           extended: true
 
       - name: Build Hugo site
-        run: hugo --minify --baseURL "https://halfapintpub.com/"
+        run: hugo --minify
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
