@@ -13,6 +13,8 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,9 +25,10 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "latest"
+          extended: true
 
       - name: Build Hugo site
-        run: hugo --minify
+        run: hugo --minify --baseURL "https://halfapintpub.com/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
