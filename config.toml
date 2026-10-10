@@ -6,12 +6,6 @@ publishDir = "public"
 # Minimal Hugo setup with default template
 theme = ""
 
-# Enable the static site output
-outputs:
-  home:
-    - HTML
-    - RSS
-
 # Markdown settings
 [markup]
   defaultMarkdownHandler = "goldmark"
