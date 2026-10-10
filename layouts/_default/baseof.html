@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
     <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
   </header>
   <main>
-    {{ .Content }}
+    {{ block "main" . }}{{ end }}
   </main>
   <footer>
     <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
