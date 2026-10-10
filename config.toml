@@ -1,0 +1,22 @@
+baseURL = "https://halfapintpub.com/"
+title = "halfapintpub"
+languageCode = "en-us"
+
+# Minimal Hugo setup with default template
+theme = ""
+
+# Enable the static site output
+outputs:
+  home:
+    - HTML
+    - RSS
+
+# Markdown settings
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Disable taxonomies we don't need for minimal setup
+disableKinds = ["taxonomy", "term"]
