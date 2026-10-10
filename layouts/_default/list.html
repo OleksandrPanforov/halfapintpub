@@ -1,134 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Params.description | default .Site.Title }}">
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
-  <style>
-    :root {
-      --bg: #fafafa;
-      --card-bg: #ffffff;
-      --text: #111827;
-      --text-muted: #6b7280;
-      --primary: #3b82f6;
-      --border: #e5e7eb;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    header h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-    header h1 a {
-      color: var(--text);
-      text-decoration: none;
-    }
-    header p {
-      color: var(--text-muted);
-      font-size: 1.125rem;
-    }
-    main {
-      display: grid;
-      gap: 1.5rem;
-    }
-    article {
-      background: var(--card-bg);
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      border: 1px solid var(--border);
-    }
-    article h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    article h2 a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    article h2 a:hover {
-      text-decoration: underline;
-    }
-    article time {
-      display: block;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-    article p {
-      color: var(--text-muted);
-    }
-    article .read-more {
-      margin-top: 1rem;
-      font-size: 0.875rem;
-    }
-    article .read-more a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    article .read-more a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-    }
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    @media (max-width: 640px) {
-      .container { padding: 1rem; }
-      header h1 { font-size: 1.75rem; }
-    }
-  </style>
-</head>
-<body>
+{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
   <div class="container">
     <header>
       <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
       {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+      {{ with .Site.Params.tagline }}<p class="tagline">{{ . }}</p>{{ end }}
+      <div class="equalizer">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      </div>
     </header>
+    
     <main>
       {{ .Content }}
       
       {{ if .Site.Pages }}
-        {{ range .Site.Pages }}
-          {{ if ne .Kind "page" }}
-            <article>
-              <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-              {{ with .Date }}<time>{{ .Format "2006-01-02" }}</time>{{ end }}
-              <p>{{ .Summary | default .Description }}</p>
-              <p class="read-more"><a href="{{ .RelPermalink }}">Read more &rarr;</a></p>
-            </article>
+        <section class="posts">
+          {{ range .Site.Pages }}
+            {{ if ne .Kind "page" }}
+              <article>
+                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+                <p>{{ .Summary | default .Description | trunc 200 }}</p>
+                <p><a href="{{ .RelPermalink }}" class="winamp-btn">Read More</a></p>
+              </article>
+            {{ end }}
           {{ end }}
-        {{ end }}
+        </section>
       {{ end }}
     </main>
+    
     <footer>
       <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.75rem;">
+        <span style="color: var(--neon-purple);">TTRPG</span> | 
+        <span style="color: var(--neon-cyan);">Hobby</span> | 
+        <span style="color: var(--neon-pink);">Stuff</span>
+      </p>
     </footer>
   </div>
-</body>
-</html>
+{{ end }}

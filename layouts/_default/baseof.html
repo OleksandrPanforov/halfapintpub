@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Params.description | default .Site.Title }}">
+  <meta name="theme-color" content="#121212">
+  <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  
+  <!-- Winamp + Glitchpunk CSS -->
+  <style>
+    :root {
+      /* === Winamp Color Palette === */
+      --bg-dark: #121212;
+      --bg-darker: #0a0a0a;
+      --chrome-light: #c0c0c0;
+      --chrome-medium: #808080;
+      --chrome-dark: #404040;
+      
+      /* === Neon Accents (Winamp LCD) === */
+      --neon-purple: #9d00ff;
+      --neon-cyan: #00ffff;
+      --neon-pink: #ff2ced;
+      --neon-green: #00ff41;
+      --neon-orange: #ff6b00;
+      
+      /* === Light Theme === */
+      --bg: var(--bg-dark);
+      --card-bg: #1e1e1e;
+      --text: #e0e0e0;
+      --text-muted: #808080;
+      --border: #404040;
+      --shadow: rgba(0, 0, 0, 0.5);
+      
+      /* Fonts */
+      --font-display: 'Orbitron', 'Courier New', monospace;
+      --font-body: 'Courier New', monospace;
+      --font-ui: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Light theme override */
+    [data-theme="light"] {
+      --bg: #f0f0f0;
+      --card-bg: #ffffff;
+      --text: #121212;
+      --text-muted: #606060;
+      --border: #c0c0c0;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --bg-dark: #e0e0e0;
+      --bg-darker: #d0d0d0;
+      --chrome-light: #404040;
+      --chrome-medium: #808080;
+      --chrome-dark: #c0c0c0;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    /* === CRT/Glitch Effects === */
+    html {
+      /* Scanlines overlay */
+      background: 
+        linear-gradient(var(--bg-darker), var(--bg-darker)),
+        repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.1) 0px,
+          rgba(0, 0, 0, 0.1) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+      background-size: 100% 4px;
+      background-color: var(--bg);
+      min-height: 100vh;
+    }
+    
+    /* Flicker effect */
+    @keyframes crt-flicker {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 0.99; }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.85; }
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      line-height: 1.7;
+      animation: crt-flicker 8s infinite;
+    }
+    
+    /* === Winamp Chrome Frame === */
+    .winamp-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1000;
+      border: 3px solid var(--chrome-dark);
+      border-radius: 8px;
+      background: 
+        linear-gradient(135deg, var(--chrome-light) 0%, var(--chrome-dark) 100%);
+      box-shadow: 
+        inset 0 0 30px rgba(255, 255, 255, 0.1),
+        0 0 20px rgba(157, 0, 255, 0.3);
+    }
+    
+    .winamp-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 28px;
+      background: linear-gradient(180deg, var(--chrome-light) 0%, var(--chrome-medium) 100%);
+      border-bottom: 2px solid var(--chrome-dark);
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .winamp-frame .title-bar {
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      right: 8px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--chrome-dark);
+      text-shadow: 1px 1px 0 var(--chrome-light);
+    }
+    
+    .winamp-frame .title-bar::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--neon-purple) 0%, var(--neon-cyan) 100%);
+      border: 1px solid var(--chrome-dark);
+    }
+    
+    .winamp-frame .window-controls {
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      display: flex;
+      gap: 4px;
+    }
+    
+    .winamp-frame .window-controls span {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: bold;
+      border: 1px solid var(--chrome-dark);
+      background: var(--chrome-medium);
+      color: var(--chrome-dark);
+    }
+    
+    .winamp-frame .window-controls span:nth-child(1) { background: var(--neon-pink); color: white; }
+    .winamp-frame .window-controls span:nth-child(2) { background: var(--neon-cyan); color: black; }
+    .winamp-frame .window-controls span:nth-child(3) { background: var(--neon-orange); color: white; }
+    
+    /* === Layout === */
+    .container {
+      max-width: 800px;
+      margin: 60px auto 2rem;
+      padding: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* === Header === */
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+    }
+    
+    header h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    header h1 a:hover {
+      text-shadow: 
+        3px 3px 0 var(--neon-purple),
+        -3px -3px 0 var(--neon-cyan);
+    }
+    
+    header p {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+      font-family: var(--font-ui);
+    }
+    
+    /* === Winamp Button Style === */
+    .winamp-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      font-family: var(--font-ui);
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, var(--chrome-medium) 0%, var(--chrome-light) 100%);
+      border: 2px solid;
+      border-color: var(--chrome-dark) var(--chrome-light) var(--chrome-light) var(--chrome-dark);
+      border-radius: 4px;
+      box-shadow: 
+        -2px -2px 0 var(--chrome-dark),
+        2px 2px 0 var(--chrome-light);
+      transition: all 0.2s ease;
+    }
+    
+    .winamp-btn:hover {
+      border-color: var(--chrome-light) var(--chrome-dark) var(--chrome-dark) var(--chrome-light);
+      box-shadow: 
+        2px 2px 0 var(--chrome-dark),
+        -2px -2px 0 var(--chrome-light);
+      transform: translateY(-2px);
+    }
+    
+    .winamp-btn:active {
+      transform: translateY(0);
+      border-color: var(--chrome-dark);
+    }
+    
+    /* === Glitch Effect on Links === */
+    a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    a:hover {
+      color: var(--neon-purple);
+    }
+    
+    a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+      transition: width 0.3s ease;
+    }
+    
+    a:hover::after {
+      width: 100%;
+    }
+    
+    /* RGB Split Glitch Effect */
+    @keyframes rgb-split {
+      0% { text-shadow: 0 0 0; }
+      20% { text-shadow: 2px 0 0 var(--neon-purple), -2px 0 0 var(--neon-cyan); }
+      40% { text-shadow: -2px 0 0 var(--neon-purple), 2px 0 0 var(--neon-cyan); }
+      60% { text-shadow: 0 2px 0 var(--neon-purple), 0 -2px 0 var(--neon-cyan); }
+      80% { text-shadow: 0 -2px 0 var(--neon-purple), 0 2px 0 var(--neon-cyan); }
+      100% { text-shadow: 0 0 0; }
+    }
+    
+    h1 a:hover, h2 a:hover, h3 a:hover {
+      animation: rgb-split 0.5s ease;
+    }
+    
+    /* === Card/Article Style === */
+    article, .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 
+        0 4px 6px var(--shadow),
+        inset 0 0 20px rgba(157, 0, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    article::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+    }
+    
+    article h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--neon-cyan);
+    }
+    
+    article h2 a {
+      color: inherit;
+    }
+    
+    article time {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-family: var(--font-ui);
+      margin-bottom: 1rem;
+    }
+    
+    article p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    
+    /* === Main Content === */
+    main {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    /* === Equalizer Animation === */
+    .equalizer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 3px;
+      height: 20px;
+      margin: 1rem 0;
+    }
+    
+    .equalizer bar {
+      width: 4px;
+      background: linear-gradient(180deg, var(--neon-purple), var(--neon-cyan));
+      border-radius: 2px;
+      animation: equalizer 0.5s ease infinite alternate;
+    }
+    
+    .equalizer bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+    .equalizer bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+    .equalizer bar:nth-child(3) { height: 100%; animation-delay: 0.2s; }
+    .equalizer bar:nth-child(4) { height: 40%; animation-delay: 0.3s; }
+    .equalizer bar:nth-child(5) { height: 80%; animation-delay: 0.4s; }
+    .equalizer bar:nth-child(6) { height: 30%; animation-delay: 0.5s; }
+    .equalizer bar:nth-child(7) { height: 70%; animation-delay: 0.6s; }
+    .equalizer bar:nth-child(8) { height: 50%; animation-delay: 0.7s; }
+    .equalizer bar:nth-child(9) { height: 90%; animation-delay: 0.8s; }
+    .equalizer bar:nth-child(10) { height: 40%; animation-delay: 0.9s; }
+    
+    @keyframes equalizer {
+      0% { height: 30%; }
+      100% { height: 100%; }
+    }
+    
+    /* === Footer === */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-family: var(--font-ui);
+    }
+    
+    footer a {
+      color: var(--neon-cyan);
+    }
+    
+    /* === Theme Toggle === */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+      background: var(--chrome-medium);
+      border: 2px solid var(--chrome-dark);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 
+        0 4px 0 var(--chrome-dark),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 
+        0 6px 0 var(--chrome-dark),
+        inset 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+    
+    .theme-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--neon-cyan);
+    }
+    
+    /* === Responsive === */
+    @media (max-width: 640px) {
+      .container { 
+        padding: 1rem;
+        margin-top: 40px;
+      }
+      header h1 { font-size: 1.5rem; }
+      .winamp-frame { border-radius: 0; }
+      .winamp-frame::before { border-radius: 0; }
+    }
+    
+    /* === VHS Static Overlay (Subtle) === */
+    .vhs-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(157, 0, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+      animation: vhs-noise 20s infinite;
+    }
+    
+    @keyframes vhs-noise {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* === Glitch Bar Effect === */
+    .glitch-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        var(--neon-purple), 
+        var(--neon-cyan), 
+        var(--neon-pink), 
+        transparent);
+      opacity: 0.3;
+      animation: glitch-bar 4s infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes glitch-bar {
+      0% { transform: translateX(-100%); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+  </style>
+  
+  <!-- Winamp Frame Overlay -->
+  <div class="winamp-frame">
+    <div class="title-bar">
+      <span>{{ .Site.Title }}</span>
+    </div>
+    <div class="window-controls">
+      <span>×</span>
+      <span>□</span>
+      <span>◉</span>
+    </div>
+  </div>
+  
+  <!-- VHS Overlay -->
+  <div class="vhs-overlay"></div>
+  
+  <!-- Glitch Bar -->
+  <div class="glitch-bar"></div>
+</head>
+<body>
+  {{ block "main" . }}{{ end }}
+  
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg id="theme-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" id="sun"/>
+      <path d="M12 3v1M12 20v1M3 12h1M20 12h1M18.36 4.64l.71.71M5.29 18.71l.71.71M4.64 18.36l.71-.71M18.71 5.29l-.71-.71M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" id="moon" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+  
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon(next);
+    }
+    
+    function updateIcon(theme) {
+      const icon = document.getElementById('theme-icon');
+      if (theme === 'light') {
+        icon.innerHTML = '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" fill="currentColor"/>';
+      } else {
+        icon.innerHTML = '<path d="M12 3v1M12 20v1M3 12h1M20 12h1M18.36 4.64l.71.71M5.29 18.71l.71.71M4.64 18.36l.71-.71M18.71 5.29l-.71-.71M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" fill="none" stroke="currentColor" stroke-width="2"/>';
+      }
+    }
+    
+    // Initialize theme
+    (function() {
+      const saved = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', saved);
+      updateIcon(saved);
+    })();
+    
+    // Glitch effect on hover for titles
+    document.addEventListener('DOMContentLoaded', function() {
+      const titles = document.querySelectorAll('h1 a, h2 a, h3 a');
+      titles.forEach(title => {
+        title.addEventListener('mouseenter', function() {
+          this.style.animation = 'rgb-split 0.5s ease';
+        });
+      });
+    });
+    
+    // Random glitch effect
+    function randomGlitch() {
+      const elements = document.querySelectorAll('article, .card');
+      const randomEl = elements[Math.floor(Math.random() * elements.length)];
+      if (randomEl) {
+        randomEl.style.transform = `translate(${(Math.random() - 0.5) * 4}px, ${(Math.random() - 0.5) * 2}px)`;
+        setTimeout(() => {
+          randomEl.style.transform = '';
+        }, 100);
+      }
+    }
+    
+    // Trigger random glitch every 5-10 seconds
+    setInterval(randomGlitch, 5000 + Math.random() * 5000);
+  </script>
+</body>
+</html>
