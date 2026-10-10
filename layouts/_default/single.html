@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description | default .Summary }}">
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --primary: #3b82f6;
+      --border: #e5e7eb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    header h1 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    header .meta {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    header .meta a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    main {
+      background: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+    main h1 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    main time {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    main p {
+      margin-bottom: 1rem;
+    }
+    main h2, main h3, main h4 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    footer {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 640px) {
+      .container { padding: 1rem; }
+      main { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+      <div class="meta">
+        <a href="{{ .Site.BaseURL }}">&larr; Back to home</a>
+      </div>
+    </header>
+    <main>
+      <h1>{{ .Title }}</h1>
+      {{ with .Date }}<time>{{ .Format "2006-01-02" }}</time>{{ end }}
+      <div>{{ .Content }}</div>
+      <a href="{{ .Site.BaseURL }}" class="back-link">&larr; Back to home</a>
+    </main>
+    <footer>
+      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>
