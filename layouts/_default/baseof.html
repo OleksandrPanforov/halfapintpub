@@ -101,8 +101,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      pointer-events: none;
       z-index: 1000;
+    }
+    
+    .winamp-window * {
+      pointer-events: auto;
     }
     
     .winamp-title-bar {
@@ -203,6 +206,10 @@
       padding: 0 12px;
       gap: 4px;
       z-index: 999;
+    }
+    
+    .winamp-menu-bar * {
+      pointer-events: auto;
     }
     
     .winamp-menu-bar .menu-item {
