@@ -1,6 +1,7 @@
 {{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
+{{ block "main" . }}{{ end }}
   <div class="container">
     <header>
       <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
@@ -22,7 +23,7 @@
               <article>
                 <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
                 {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
-                <p>{{ .Summary | default .Description | safeHTML }}</p>
+                <p>{{ .Summary | default .Description }}</p>
                 <p><a href="{{ .RelPermalink }}" class="winamp-btn">Read More</a></p>
               </article>
             {{ end }}
