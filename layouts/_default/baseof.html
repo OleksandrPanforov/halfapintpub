@@ -146,6 +146,12 @@
       gap: 6px;
     }
     
+    .winamp-window-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    
     .winamp-window-controls .control {
       width: 20px;
       height: 20px;
@@ -159,6 +165,12 @@
       background: var(--chrome-medium);
       color: var(--chrome-dark);
       box-shadow: inset 0 1px 0 var(--chrome-light);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .winamp-window-controls .control:hover {
+      transform: scale(1.1);
     }
     
     .winamp-window-controls .control.close { 
@@ -177,9 +189,53 @@
       box-shadow: 0 0 6px var(--neon-orange);
     }
     
-    .winamp-border {
+    /* Menu Bar */
+    .winamp-menu-bar {
       position: absolute;
       top: 32px;
+      left: 0;
+      right: 0;
+      height: 28px;
+      background: linear-gradient(180deg, var(--chrome-medium) 0%, var(--chrome-light) 100%);
+      border-bottom: 1px solid var(--chrome-dark);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 4px;
+      z-index: 999;
+    }
+    
+    .winamp-menu-bar .menu-item {
+      padding: 4px 12px;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--chrome-dark);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+      background: transparent;
+    }
+    
+    .winamp-menu-bar .menu-item:hover {
+      background: var(--chrome-light);
+      border-color: var(--chrome-dark);
+      color: var(--neon-purple);
+      text-shadow: 0 0 4px var(--neon-purple);
+    }
+    
+    .winamp-menu-bar .menu-item.active {
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+      color: white;
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 6px var(--neon-purple);
+    }
+    
+    .winamp-border {
+      position: absolute;
+      top: 60px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -195,11 +251,11 @@
     /* === Layout === */
     .page-container {
       max-width: 840px;
-      margin: 60px auto 2rem;
+      margin: 88px auto 2rem;
       padding: 2rem;
       position: relative;
       z-index: 10;
-      min-height: calc(100vh - 120px);
+      min-height: calc(100vh - 148px);
     }
     
     /* === Header === */
@@ -531,7 +587,7 @@
     /* === Glitch Bar Effect === */
     .glitch-bar {
       position: fixed;
-      top: 32px;
+      top: 60px;
       left: 0;
       width: 100%;
       height: 2px;
@@ -623,23 +679,40 @@
     /* === Responsive Design === */
     @media (max-width: 768px) {
       .winamp-title-bar {
-        height: 28px;
-        padding: 0 8px;
-        font-size: 11px;
+        height: 24px;
+        padding: 0 6px;
+        font-size: 10px;
       }
       
       .winamp-window-controls .control {
-        width: 16px;
-        height: 16px;
-        font-size: 8px;
+        width: 14px;
+        height: 14px;
+        font-size: 7px;
+      }
+      
+      .winamp-menu-bar {
+        top: 24px;
+        height: 22px;
+        padding: 0 6px;
+        gap: 2px;
+      }
+      
+      .winamp-menu-bar .menu-item {
+        padding: 2px 8px;
+        font-size: 10px;
       }
       
       .winamp-border {
-        top: 28px;
+        top: 46px;
       }
       
       .glitch-bar {
-        top: 28px;
+        top: 46px;
+      }
+      
+      .page-container {
+        margin: 66px auto 1.5rem;
+        min-height: calc(100vh - 112px);
       }
       
       .page-container {
@@ -694,6 +767,11 @@
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
       }
+      
+      .winamp-menu-bar .menu-item {
+        padding: 2px 6px;
+        font-size: 9px;
+      }
     }
     
     /* === Print Styles === */
@@ -718,10 +796,16 @@
     <div class="winamp-title-bar">
       <span class="winamp-title-bar-text">{{ .Site.Title }}</span>
       <div class="winamp-window-controls">
-        <span class="control close">X</span>
-        <span class="control minimize">_</span>
+        <a href="{{ .Site.BaseURL }}" class="control close">X</a>
+        <a href="{{ .Site.BaseURL }}about/" class="control minimize">_</a>
         <span class="control maximize">[]</span>
       </div>
+    </div>
+    <div class="winamp-menu-bar">
+      <a href="{{ .Site.BaseURL }}" class="menu-item" id="menu-home">Home</a>
+      <a href="{{ .Site.BaseURL }}about/" class="menu-item" id="menu-about">About</a>
+      <a href="{{ .Site.BaseURL }}posts/" class="menu-item" id="menu-blog">Blog</a>
+      <span class="menu-item" style="margin-left: auto;">{{ .Site.Params.tagline | default "" }}</span>
     </div>
     <div class="winamp-border"></div>
   </div>
@@ -783,6 +867,20 @@
         (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', saved);
       updateIcon(saved);
+    })();
+    
+    // Set active menu item
+    (function() {
+      const path = window.location.pathname;
+      const menuItems = document.querySelectorAll('.winamp-menu-bar .menu-item');
+      menuItems.forEach(item => {
+        item.classList.remove('active');
+        const href = item.getAttribute('href') || '';
+        // Match exact or directory
+        if (path === href || path.startsWith(href) && href !== '/') {
+          item.classList.add('active');
+        }
+      });
     })();
     
     // Glitch effect on hover for titles
