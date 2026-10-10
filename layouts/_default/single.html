@@ -1,37 +1,29 @@
 {{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-  <div class="container">
-    <header>
-      <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-      {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
-      <div class="winamp-btn" style="display: inline-block; margin-top: 1rem;">
-        <a href="{{ .Site.BaseURL }}" style="color: inherit;">&larr; Back to Home</a>
-      </div>
-    </header>
-    
-    <main>
-      <article>
-        <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem; color: var(--neon-cyan);">{{ .Title }}</h2>
-        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}" style="color: var(--text-muted); font-size: 0.875rem; font-family: var(--font-ui);">{{ .Format "January 2, 2006" }}</time>{{ end }}
-        
-        <div style="margin-top: 1.5rem;" class="content-body">{{ .Content }}</div>
-        
-        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-          <p style="color: var(--text-muted); font-size: 0.875rem;">
-            <a href="{{ .Site.BaseURL }}" class="winamp-btn" style="font-size: 0.75rem; padding: 0.25rem 0.75rem;">&larr; Back</a>
-          </p>
-        </div>
-      </article>
-    </main>
-    
-    <footer>
-      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.75rem;">
-        <span style="color: var(--neon-purple);">TTRPG</span> | 
-        <span style="color: var(--neon-cyan);">Hobby</span> | 
-        <span style="color: var(--neon-pink);">Stuff</span>
-      </p>
-    </footer>
-  </div>
+  <main>
+    <article>
+      <header class="article-header">
+        <h2>{{ .Title }}</h2>
+        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+      </header>
+      
+      <div class="content-body">{{ .Content }}</div>
+      
+      <footer class="article-footer">
+        <p>
+          <a href="{{ .Site.BaseURL }}" class="winamp-btn">&larr; Back to Home</a>
+        </p>
+      </footer>
+    </article>
+  </main>
+  
+  <footer class="site-footer">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
+    <p class="tags">
+      <span style="color: var(--neon-purple);">TTRPG</span> | 
+      <span style="color: var(--neon-cyan);">Hobby</span> | 
+      <span style="color: var(--neon-pink);">Stuff</span>
+    </p>
+  </footer>
 {{ end }}

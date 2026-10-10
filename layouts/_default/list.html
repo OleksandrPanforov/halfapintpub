@@ -1,43 +1,32 @@
 {{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-  <div class="container">
-    <header>
-      <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-      {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
-      {{ with .Site.Params.tagline }}<p class="tagline">{{ . }}</p>{{ end }}
-      <div class="equalizer">
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-      </div>
-    </header>
+  <main>
+    {{ .Content }}
     
-    <main>
-      {{ .Content }}
-      
-      {{ if .Site.Pages }}
-        <section class="posts">
-          {{ range .Site.Pages }}
-            {{ if ne .Kind "page" }}
-              <article>
-                <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-                {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
-                <p>{{ .Summary | default .Description }}</p>
-                <p><a href="{{ .RelPermalink }}" class="winamp-btn">Read More</a></p>
-              </article>
-            {{ end }}
+    {{ if .Site.Pages }}
+      <section class="posts">
+        {{ range .Site.Pages }}
+          {{ if ne .Kind "page" }}
+            <article>
+              <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+              {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+              {{ with .Summary }}<p>{{ . }}</p>{{ end }}
+              {{ with .Description }}<p>{{ . }}</p>{{ end }}
+              <p><a href="{{ .RelPermalink }}" class="winamp-btn">Read More</a></p>
+            </article>
           {{ end }}
-        </section>
-      {{ end }}
-    </main>
-    
-    <footer>
-      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.75rem;">
-        <span style="color: var(--neon-purple);">TTRPG</span> | 
-        <span style="color: var(--neon-cyan);">Hobby</span> | 
-        <span style="color: var(--neon-pink);">Stuff</span>
-      </p>
-    </footer>
-  </div>
+        {{ end }}
+      </section>
+    {{ end }}
+  </main>
+  
+  <footer class="site-footer">
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
+    <p class="tags">
+      <span style="color: var(--neon-purple);">TTRPG</span> | 
+      <span style="color: var(--neon-cyan);">Hobby</span> | 
+      <span style="color: var(--neon-pink);">Stuff</span>
+    </p>
+  </footer>
 {{ end }}

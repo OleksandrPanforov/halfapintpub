@@ -2,6 +2,10 @@ baseURL = "https://halfapintpub.com/"
 title = "halfapintpub"
 publishDir = "public"
 
+[params]
+  description = "TTRPG adventures, hobby projects, and late-2000s nostalgia"
+  tagline = "Glitchpunk & Winamp-inspired ramblings"
+
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
