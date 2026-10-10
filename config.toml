@@ -1,10 +1,23 @@
 baseURL = "https://halfapintpub.com/"
 title = "halfapintpub"
 publishDir = "public"
+defaultContentLanguage = "uk"
+
+[languages]
+  [languages.uk]
+    languageName = "Українська"
+    weight = 1
+    title = "Паб пів пінти"
+    
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "Half Pint Pub"
 
 [params]
   description = "TTRPG adventures, hobby projects, and late-2000s nostalgia"
   tagline = "Glitchpunk & Winamp-inspired ramblings"
+  logo = "/logo.png"
 
 [markup]
   defaultMarkdownHandler = "goldmark"

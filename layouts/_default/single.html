@@ -5,25 +5,16 @@
     <article>
       <header class="article-header">
         <h2>{{ .Title }}</h2>
-        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>{{ end }}
       </header>
       
       <div class="content-body">{{ .Content }}</div>
       
       <footer class="article-footer">
         <p>
-          <a href="{{ .Site.BaseURL }}" class="winamp-btn">&larr; Back to Home</a>
+          <a href="{{ .Site.BaseURL }}" class="winamp-btn">&larr; {{ i18n "back_to_home" | default "Back to Home" }}</a>
         </p>
       </footer>
     </article>
   </main>
-  
-  <footer class="site-footer">
-    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
-    <p class="tags">
-      <span style="color: var(--neon-purple);">TTRPG</span> | 
-      <span style="color: var(--neon-cyan);">Hobby</span> | 
-      <span style="color: var(--neon-pink);">Stuff</span>
-    </p>
-  </footer>
 {{ end }}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,7 +68,6 @@
     html {
       min-height: 100vh;
       background: var(--bg);
-      /* Subtle scanlines */
       background-image: 
         linear-gradient(var(--bg-darker), var(--bg-darker)),
         repeating-linear-gradient(
@@ -81,7 +80,6 @@
       background-size: 100% 4px;
     }
     
-    /* Flicker effect */
     @keyframes crt-flicker {
       0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 0.99; }
       20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.85; }
@@ -143,11 +141,6 @@
     .winamp-window-controls {
       display: flex;
       gap: 6px;
-    }
-    
-    .winamp-window-controls {
-      display: flex;
-      gap: 6px;
       align-items: center;
     }
     
@@ -204,7 +197,6 @@
       z-index: 999;
     }
     
-    
     .winamp-menu-bar .menu-item {
       padding: 4px 12px;
       font-family: var(--font-ui);
@@ -248,6 +240,39 @@
         0 0 20px rgba(157, 0, 255, 0.15);
     }
     
+    /* Language Switcher */
+    .lang-switcher {
+      position: absolute;
+      top: 32px;
+      right: 12px;
+      z-index: 1001;
+      display: flex;
+      gap: 4px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+    }
+    
+    .lang-switcher a {
+      padding: 2px 8px;
+      color: var(--chrome-dark);
+      text-decoration: none;
+      background: var(--chrome-medium);
+      border: 1px solid var(--chrome-dark);
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+    
+    .lang-switcher a:hover {
+      background: var(--chrome-light);
+      color: var(--neon-cyan);
+    }
+    
+    .lang-switcher a.active {
+      background: var(--neon-cyan);
+      color: black;
+      font-weight: bold;
+    }
+    
     /* === Layout === */
     .page-container {
       max-width: 840px;
@@ -260,10 +285,21 @@
     
     /* === Header === */
     .site-header {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
       text-align: center;
+    }
+    
+    .site-logo {
+      margin-bottom: 1.5rem;
+    }
+    
+    .site-logo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
     }
     
     .site-header h1 {
@@ -295,11 +331,11 @@
       color: var(--text-muted);
       font-size: 1.125rem;
       font-family: var(--font-ui);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       letter-spacing: 1px;
     }
     
-    /* === Equalizer Animation (Winamp-style) === */
+    /* === Equalizer Animation === */
     .equalizer-container {
       display: flex;
       justify-content: center;
@@ -497,11 +533,6 @@
       gap: 1.5rem;
     }
     
-    /* === Navigation === */
-    .nav-back {
-      margin: 2rem 0;
-    }
-    
     /* === Footer === */
     .site-footer {
       margin-top: 4rem;
@@ -524,6 +555,21 @@
     
     .site-footer .tags span {
       margin: 0 0.5rem;
+    }
+    
+    /* SEO Footer Text */
+    .seo-footer {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    .seo-footer p {
+      margin: 0.5rem 0;
     }
     
     /* === Theme Toggle === */
@@ -564,14 +610,14 @@
       fill: var(--neon-cyan);
     }
     
-    /* === VHS Static Overlay (Subtle) === */
+    /* === VHS Overlay === */
     .vhs-overlay {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      pointer-events: auto;
+      pointer-events: none;
       z-index: -1;
       background: 
         radial-gradient(ellipse at 15% 25%, rgba(157, 0, 255, 0.08) 0%, transparent 50%),
@@ -584,7 +630,7 @@
       50% { opacity: 0.6; }
     }
     
-    /* === Glitch Bar Effect === */
+    /* === Glitch Bar === */
     .glitch-bar {
       position: fixed;
       top: 60px;
@@ -601,7 +647,7 @@
         var(--neon-cyan));
       opacity: 0.5;
       animation: glitch-bar 6s infinite;
-      pointer-events: auto;
+      pointer-events: none;
       z-index: 999;
     }
     
@@ -702,6 +748,17 @@
         font-size: 10px;
       }
       
+      .lang-switcher {
+        top: 24px;
+        right: 6px;
+        font-size: 10px;
+      }
+      
+      .lang-switcher a {
+        padding: 2px 6px;
+        font-size: 9px;
+      }
+      
       .winamp-border {
         top: 46px;
       }
@@ -713,12 +770,7 @@
       .page-container {
         margin: 66px auto 1.5rem;
         min-height: calc(100vh - 112px);
-      }
-      
-      .page-container {
-        margin: 40px auto 1.5rem;
-        padding: 1.25rem;
-        min-height: auto;
+        padding: 1rem;
       }
       
       .site-header h1 {
@@ -796,18 +848,30 @@
     <div class="winamp-title-bar">
       <span class="winamp-title-bar-text">{{ .Site.Title }}</span>
       <div class="winamp-window-controls">
-        <a href="{{ .Site.BaseURL }}" class="control close">X</a>
-        <a href="{{ .Site.BaseURL }}about/" class="control minimize">_</a>
+        <a href="{{ .Site.BaseURL }}" class="control close" title="Home">X</a>
+        <a href="{{ .Site.BaseURL }}about/" class="control minimize" title="About">_</a>
         <span class="control maximize">[]</span>
       </div>
     </div>
     <div class="winamp-menu-bar">
-      <a href="{{ .Site.BaseURL }}" class="menu-item" id="menu-home">Home</a>
-      <a href="{{ .Site.BaseURL }}about/" class="menu-item" id="menu-about">About</a>
-      <a href="{{ .Site.BaseURL }}posts/" class="menu-item" id="menu-blog">Blog</a>
+      <a href="{{ .Site.BaseURL }}" class="menu-item" id="menu-home">
+        {{ if eq .Lang "uk" }}Головна{{ else }}Home{{ end }}
+      </a>
+      <a href="{{ .Site.BaseURL }}about/" class="menu-item" id="menu-about">
+        {{ if eq .Lang "uk" }}Про сайт{{ else }}About{{ end }}
+      </a>
+      <a href="{{ .Site.BaseURL }}posts/" class="menu-item" id="menu-blog">
+        {{ if eq .Lang "uk" }}Блог{{ else }}Blog{{ end }}
+      </a>
       <span class="menu-item" style="margin-left: auto;">{{ .Site.Params.tagline | default "" }}</span>
     </div>
     <div class="winamp-border"></div>
+  </div>
+  
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <a href="{{ .Site.BaseURL }}" class="lang-link{{ if eq .Lang "uk" }} active{{ end }}" hreflang="uk">UA</a>
+    <a href="{{ .Site.BaseURL }}en/" class="lang-link{{ if eq .Lang "en" }} active{{ end }}" hreflang="en">EN</a>
   </div>
   
   <!-- VHS Overlay -->
@@ -819,6 +883,12 @@
 <body>
   <div class="page-container">
     <header class="site-header">
+      <div class="site-logo">
+        {{/* Logo will be added via content or partial */}}
+        {{ with .Site.Params.logo }}
+          <img src="{{ . | relURL }}" alt="{{ .Site.Title }}" width="200">
+        {{ end }}
+      </div>
       <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
       {{ with .Site.Params.tagline }}<p class="site-tagline">{{ . }}</p>{{ end }}
       {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
@@ -833,6 +903,21 @@
     
     {{ block "main" . }}{{ end }}
   </div>
+  
+  <footer class="site-footer">
+    <div class="seo-footer">
+      <p><strong>{{ if eq .Lang "uk" }}Паб пів пінти{{ else }}Half Pint Pub{{ end }}</strong> - {{ if eq .Lang "uk" }}ваш путівник у світ настільних ігор!{{ else }}your guide to the world of board games!{{ end }}</p>
+      <p>{{ if eq .Lang "uk" }}Ласкаво просимо до нашого сайту, присвяченого настільним іграм, зокрема Dungeons & Dragons.{{ else }}Welcome to our board game site, dedicated to tabletop games, especially Dungeons & Dragons.{{ end }}</p>
+      <p>{{ if eq .Lang "uk" }}Тут ви знайдете огляди, поради та історії з ігор.{{ else }}Here you will find reviews, tips and game stories.{{ end }}</p>
+      <p>{{ if eq .Lang "uk" }}Приєднуйтесь до нашої спільноти сьогодні!{{ else }}Join our community today!{{ end }}</p>
+    </div>
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. {{ if eq .Lang "uk" }}Побудовано за допомогою{{ else }}Built with{{ end }} <a href="https://gohugo.io">Hugo</a>.</p>
+    <p class="tags">
+      <span style="color: var(--neon-purple);">TTRPG</span> | 
+      <span style="color: var(--neon-cyan);">Hobby</span> | 
+      <span style="color: var(--neon-pink);">Stuff</span>
+    </p>
+  </footer>
   
   <!-- Theme Toggle -->
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -869,20 +954,6 @@
       updateIcon(saved);
     })();
     
-    // Set active menu item
-    (function() {
-      const path = window.location.pathname;
-      const menuItems = document.querySelectorAll('.winamp-menu-bar .menu-item');
-      menuItems.forEach(item => {
-        item.classList.remove('active');
-        const href = item.getAttribute('href') || '';
-        // Match exact or directory
-        if (path === href || path.startsWith(href) && href !== '/') {
-          item.classList.add('active');
-        }
-      });
-    })();
-    
     // Glitch effect on hover for titles
     document.addEventListener('DOMContentLoaded', function() {
       const titles = document.querySelectorAll('h1 a, h2 a, h3 a');
@@ -914,15 +985,33 @@
     // Trigger random glitch every 6-10 seconds
     setInterval(randomGlitch, 6000 + Math.random() * 4000);
     
-    // Pulsing equalizer effect on scroll
-    window.addEventListener('scroll', function() {
-      const equalizer = document.querySelector('.equalizer');
-      if (equalizer) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.1;
-        equalizer.style.transform = `scaleY(${1 + Math.sin(scrolled * 0.01) * 0.05})`;
-      }
-    });
+    // Set active menu item
+    (function() {
+      const path = window.location.pathname;
+      const menuItems = document.querySelectorAll('.winamp-menu-bar .menu-item');
+      menuItems.forEach(item => {
+        item.classList.remove('active');
+        const href = item.getAttribute('href') || '';
+        if (path === href || path.startsWith(href) && href !== '/') {
+          item.classList.add('active');
+        }
+      });
+    })();
+    
+    // Set active language link
+    (function() {
+      const path = window.location.pathname;
+      const langLinks = document.querySelectorAll('.lang-switcher .lang-link');
+      langLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href') || '';
+        const lang = link.getAttribute('hreflang') || '';
+        // Check if current path matches the language
+        if (path.startsWith('/' + lang + '/') || (lang === 'uk' && !path.startsWith('/en/'))) {
+          link.classList.add('active');
+        }
+      });
+    })();
   </script>
 </body>
 </html>

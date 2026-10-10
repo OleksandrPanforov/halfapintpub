@@ -10,23 +10,14 @@
           {{ if ne .Kind "page" }}
             <article>
               <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-              {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>{{ end }}
+              {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>{{ end }}
               {{ with .Summary }}<p>{{ . }}</p>{{ end }}
               {{ with .Description }}<p>{{ . }}</p>{{ end }}
-              <p><a href="{{ .RelPermalink }}" class="winamp-btn" style="pointer-events: auto;">Read More</a></p>
+              <p><a href="{{ .RelPermalink }}" class="winamp-btn">{{ i18n "read_more" | default "Read More" }}</a></p>
             </article>
           {{ end }}
         {{ end }}
       </section>
     {{ end }}
   </main>
-  
-  <footer class="site-footer">
-    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. Built with <a href="https://gohugo.io">Hugo</a>.</p>
-    <p class="tags">
-      <span style="color: var(--neon-purple);">TTRPG</span> | 
-      <span style="color: var(--neon-cyan);">Hobby</span> | 
-      <span style="color: var(--neon-pink);">Stuff</span>
-    </p>
-  </footer>
 {{ end }}

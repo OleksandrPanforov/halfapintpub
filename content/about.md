@@ -1,32 +1,32 @@
 ---
-title: "About halfapintpub"
+title: "Про сайт | halfapintpub"
+language: uk
+draft: false
 ---
 
-## What is halfapintpub?
+## Про що цей сайт?
 
-A digital tavern for tabletop role-playing games, hobby projects, and late-2000s internet nostalgia. We brew homebrew adventures, tinker with weird tech, and occasionally glitch the matrix.
+Цей сайт присвячений моїй пристрасті до настільних ігор, зокрема до Dungeons & Dragons. Тут я ділюся своїми думками, оглядами, порадами та історіями з нашого досвіду гри.
 
-## The Name
+## Чому "Паб пів пінти"?
 
-"Half a pint" - because sometimes a full measure is too much, but you still want the good stuff. Also, it sounds like something a halfling would order at the inn.
+"Паб пів пінти" — це символічне місце, де можна зібратися з друзями, випити пів пінти пива (або іншого напою) і насолодитися грою. Це місце, де кожен може знайти щось цікаве для себе.
 
-## What You'll Find Here
+## Що ви знайдете тут?
 
-- **TTRPG Content**: Homebrew rules, adventure hooks, character concepts, and campaign logs
-- **Hobby Projects**: Code snippets, DIY builds, and experiments with retro tech
-- **Nostalgia**: Aesthetic throwbacks to the Winamp, CRT, and dial-up era
-- **Ramblings**: Occasionally coherent thoughts on games, tech, and creativity
+- **Огляди ігор**: Детальні огляди найновіших настільних ігор, включаючи D&D
+- **Поради для гравців**: Корисні поради для початківців і досвідчених гравців
+- **Історії з ігор**: Цікаві історії з нашого досвіду гри
+- **Новини та оновлення**: Останні новини з світу настільних ігор
 
-## The Vibe
+## Чому я створив цей сайт?
 
-Imagine a dimly-lit basement rec room, circa 2004. A CRT monitor hums in the corner running a Winamp visualization. A stack of polyhedral dice sits next to a half-empty Mountain Dew can. The walls are covered in character sheets, circuit diagrams, and inside jokes only the DM understands.
+Я давно захоплююсь настільними іграми, і хотів мати місце, де міг би ділитися своїми думками та досвідом з іншими гравцями. "Паб пів пінти" — це моя спроба створити спільноту, де кожен може знайти щось цікаве для себе.
 
-That's the energy we're channeling.
+## Як зв'язатися зі мною?
 
-## Connect
-
-Find me in the usual places, or roll for initiative and send a message into the void.
+Ви можете зв'язатися зі мною через форму зворотного зв'язку на сайті або написати мені на електронну пошту. Я завжди радий новим знайомствам і спілкуванню з однодумцями!
 
 ---
 
-*Built with Hugo. Themed with nostalgia. Powered by caffeine.*
+*Приєднуйтесь до нашої спільноти сьогодні!*
