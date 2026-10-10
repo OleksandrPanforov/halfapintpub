@@ -5,12 +5,12 @@ defaultContentLanguage = "uk"
 
 [languages]
   [languages.uk]
-    languageName = "Українська"
+    label = "Українська"
     weight = 1
     title = "Паб пів пінти"
     
   [languages.en]
-    languageName = "English"
+    label = "English"
     weight = 2
     title = "Half Pint Pub"
 

@@ -4,8 +4,6 @@ language: uk
 draft: false
 ---
 
-{{< logo >}}
-
 ## Я хочеш знати, що я думаю про гроші, спитай, у кого він взяв.
 
 Oleksandr Panforov
