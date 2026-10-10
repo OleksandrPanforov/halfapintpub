@@ -1,17 +1,11 @@
 baseURL = "https://halfapintpub.com/"
 title = "halfapintpub"
-languageCode = "en-us"
 publishDir = "public"
 
-# Minimal Hugo setup with default template
-theme = ""
-
-# Markdown settings
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-# Disable taxonomies we don't need for minimal setup
 disableKinds = ["taxonomy", "term"]
