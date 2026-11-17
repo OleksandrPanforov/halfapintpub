@@ -2,6 +2,7 @@ baseURL = "https://halfapintpub.com/"
 title = "halfapintpub"
 publishDir = "public"
 defaultContentLanguage = "uk"
+disableKinds = ["taxonomy", "term"]
 
 [languages]
   [languages.uk]
@@ -24,5 +25,3 @@ defaultContentLanguage = "uk"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
-disableKinds = ["taxonomy", "term"]
