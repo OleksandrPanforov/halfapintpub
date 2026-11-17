@@ -19,6 +19,8 @@ disableKinds = ["taxonomy", "term"]
   description = "TTRPG adventures, hobby projects, and late-2000s nostalgia"
   tagline = "Glitchpunk & Winamp-inspired ramblings"
   logo = "/logo.png"
+  giscus_repo_id = "R_kgDOTl5d2A"
+  giscus_category = "General"
 
 [markup]
   defaultMarkdownHandler = "goldmark"

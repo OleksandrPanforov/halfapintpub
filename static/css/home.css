@@ -919,3 +919,6 @@ body.flash .topbar {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
 }
+
+.giscus-title { margin-top: 2.5rem; }
+.giscus { margin: 0 0 3rem; }
