@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.Params.description | default site.Title }}">
+  <meta name="theme-color" content="#050508">
+  <title>{{ .Title }}</title>
+  <link rel="icon" type="image/png" href="{{ site.Params.logo | relURL }}">
+  <link rel="stylesheet" href="{{ "css/home.css" | relURL }}">
+</head>
+<body>
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ $posts = $posts.ByDate.Reverse }}
+
+  <header class="topbar">
+    <a class="brand" href="{{ "/" | relLangURL }}">
+      <img class="brand-logo" src="{{ site.Params.logo | relURL }}" alt="">
+      <span class="brand-name">{{ site.Title | upper }}</span>
+    </a>
+    <nav class="topnav">
+      <a href="{{ "/" | relLangURL }}" class="active">{{ i18n "nav_home" | default "Home" }}</a>
+      <a href="{{ "posts/" | relLangURL }}">{{ i18n "nav_quests" | default "Quest log" }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ i18n "nav_about" | default "About" }}</a>
+    </nav>
+    <div class="top-right">
+      <span class="clock" id="clock">00:00:00</span>
+      <span class="lang-switch">
+        <a href="{{ .Permalink }}" hreflang="{{ .Lang }}" class="active">{{ .Lang | upper }}</a>
+        {{ range .Translations }}<a href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang | upper }}</a>{{ end }}
+      </span>
+    </div>
+  </header>
+
+  <main class="screen" id="screen">
+    <section class="hero">
+      <p class="boot-line"><span class="prompt">C:\TAVERN&gt;</span> <span id="typed"></span><span class="cursor">&#9612;</span></p>
+      <h1 class="glitch" id="glitch-title" data-text="{{ .Title }}">{{ .Title }}</h1>
+      <p class="tagline">{{ i18n "hero_tagline" | default "a personal TTRPG blog" }}</p>
+      <div class="cta-row">
+        <button class="btn btn-primary" id="roll-btn" type="button">{{ i18n "hero_cta_roll" | default "Roll d20" }}</button>
+        <a class="btn" href="{{ "posts/" | relLangURL }}">{{ i18n "hero_cta_log" | default "Open quest log" }}</a>
+      </div>
+    </section>
+
+    <section class="hud">
+      <div class="panel panel-dice">
+        <h3 class="panel-label"><span class="dot"></span>{{ i18n "panel_dice" | default "Dice" }}</h3>
+        <button class="d20-wrap" id="d20" type="button" aria-label="{{ i18n "hero_cta_roll" | default "Roll d20" }}">
+          <svg class="d20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#ffd166" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+              <polygon points="50,8 86.4,29 86.4,71 50,92 13.6,71 13.6,29"/>
+              <polygon points="50,30 67,60 33,60" fill="rgba(255,209,102,0.08)"/>
+              <line x1="50" y1="8" x2="50" y2="30"/>
+              <line x1="86.4" y1="29" x2="67" y2="60"/>
+              <line x1="86.4" y1="29" x2="50" y2="30"/>
+              <line x1="86.4" y1="71" x2="67" y2="60"/>
+              <line x1="50" y1="92" x2="67" y2="60"/>
+              <line x1="50" y1="92" x2="33" y2="60"/>
+              <line x1="13.6" y1="71" x2="33" y2="60"/>
+              <line x1="13.6" y1="29" x2="33" y2="60"/>
+              <line x1="13.6" y1="29" x2="50" y2="30"/>
+            </g>
+            <circle cx="50" cy="52" r="2.5" fill="#ffd166"/>
+          </svg>
+        </button>
+        <div class="lcd"><span id="dice-result">--</span></div>
+        <p class="dice-msg" id="dice-msg">{{ i18n "dice_hint" | default "click the die to roll" }}</p>
+      </div>
+
+      <div class="panel panel-stats">
+        <h3 class="panel-label"><span class="dot"></span>{{ i18n "panel_stats" | default "Character sheet" }}</h3>
+        <div class="stat">
+          <span class="stat-name">HP</span>
+          <div class="bar"><div class="bar-fill hp" style="width:100%"></div></div>
+          <span class="stat-val">20/20</span>
+        </div>
+        <div class="stat">
+          <span class="stat-name">MP</span>
+          <div class="bar"><div class="bar-fill mp" style="width:66%"></div></div>
+          <span class="stat-val">8/12</span>
+        </div>
+        <div class="stat">
+          <span class="stat-name">LVL</span>
+          <span class="stat-val big">&infin;</span>
+        </div>
+        <div class="stat">
+          <span class="stat-name">{{ i18n "stat_quests" | default "Quests" }}</span>
+          <span class="stat-val big">{{ len $posts }}</span>
+        </div>
+      </div>
+
+      <div class="panel panel-status">
+        <h3 class="panel-label"><span class="dot"></span>{{ i18n "panel_status" | default "System status" }}</h3>
+        <ul class="status-list">
+          <li><span>SYS</span><span class="ok">{{ i18n "status_ok" | default "NOMINAL" }}</span></li>
+          <li><span>NET</span><span>56K MODEM</span></li>
+          <li><span>{{ i18n "status_rec" | default "REC" }}</span><span class="rec">&#9679;</span></li>
+          <li><span>{{ i18n "status_guestbook" | default "GUESTBOOK" }}</span><span>0</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="questlog">
+      <h2 class="section-title"><span class="prompt">&gt;</span> {{ i18n "questlog_title" | default "Quest log" }} <span class="count">[{{ len $posts }}]</span></h2>
+      {{ if $posts }}
+        {{ range first 6 $posts }}
+          <article class="quest">
+            {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+            <div class="quest-body">
+              <h3><a class="quest-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              {{ with .Description }}<p class="quest-desc">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="quest-desc">{{ . | plainify | truncate 140 }}</p>{{ end }}{{ end }}
+            </div>
+            <a class="quest-open" href="{{ .RelPermalink }}">{{ i18n "quest_open" | default "open" }} &#9654;</a>
+          </article>
+        {{ end }}
+      {{ else }}
+        <p class="questlog-empty">{{ i18n "questlog_empty" | default "No quests yet." }}</p>
+      {{ end }}
+    </section>
+  </main>
+
+  <footer class="bottombar">
+    <div class="ticker"><div class="ticker-inner"><span>{{ i18n "ticker" | default "welcome" }}</span><span aria-hidden="true">{{ i18n "ticker" | default "welcome" }}</span></div></div>
+    <div class="badges">
+      <span class="badge">TTRPG</span>
+      <span class="badge">d20</span>
+      <span class="badge">800&times;600</span>
+      <span class="badge">GLITCH</span>
+      <span class="badge">HTML 4.01</span>
+    </div>
+    <p class="footer-line">&copy; {{ now.Format "2006" }} {{ site.Title }} &middot; {{ i18n "footer_note" | default "best viewed at 800x600" }} &middot; {{ i18n "footer_made" | default "hand-crafted HTML" }}</p>
+  </footer>
+
+  <div class="overlay scanlines" aria-hidden="true"></div>
+  <div class="overlay vignette" aria-hidden="true"></div>
+  <div class="overlay noise" aria-hidden="true"></div>
+  <div class="tear" id="tear" aria-hidden="true"></div>
+  <div class="tracking" id="tracking" aria-hidden="true"></div>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var bootLines = [
+      {{ i18n "hero_boot_1" | default "> booting halfapintpub.exe ..." | jsonify }},
+      {{ i18n "hero_boot_2" | default "> mounting /dev/d20 ... ok" | jsonify }},
+      {{ i18n "hero_boot_3" | default "> welcome, adventurer." | jsonify }}
+    ];
+    var flavor = [
+      {{ i18n "dice_flavor_1" | default "the dice have spoken" | jsonify }},
+      {{ i18n "dice_flavor_2" | default "a fair roll" | jsonify }},
+      {{ i18n "dice_flavor_3" | default "the tavern approves" | jsonify }}
+    ];
+    var msgNat20 = {{ i18n "dice_nat20" | default "NAT 20 — CRITICAL HIT!" | jsonify }};
+    var msgNat1 = {{ i18n "dice_nat1" | default "NAT 1... the table goes silent." | jsonify }};
+
+    var typedEl = document.getElementById("typed");
+    var lineIdx = 0, charIdx = 0, deleting = false;
+    function typeTick() {
+      if (reduceMotion) { if (typedEl) typedEl.textContent = bootLines[0]; return; }
+      var line = bootLines[lineIdx];
+      if (!deleting) {
+        charIdx++;
+        typedEl.textContent = line.slice(0, charIdx);
+        if (charIdx === line.length) { deleting = true; setTimeout(typeTick, 3800); return; }
+        setTimeout(typeTick, 45 + Math.random() * 60);
+      } else {
+        charIdx--;
+        typedEl.textContent = line.slice(0, charIdx);
+        if (charIdx === 0) { deleting = false; lineIdx = (lineIdx + 1) % bootLines.length; setTimeout(typeTick, 500); return; }
+        setTimeout(typeTick, 22);
+      }
+    }
+    if (typedEl) typeTick();
+
+    var title = document.getElementById("glitch-title");
+    function glitchTitle() {
+      if (!reduceMotion && title) {
+        title.classList.add("is-glitching");
+        setTimeout(function () { title.classList.remove("is-glitching"); }, 120 + Math.random() * 260);
+      }
+      setTimeout(glitchTitle, 1800 + Math.random() * 4200);
+    }
+    setTimeout(glitchTitle, 900);
+
+    var screen = document.getElementById("screen");
+    var tear = document.getElementById("tear");
+    function doTear() {
+      if (!reduceMotion && tear && screen) {
+        tear.style.top = (Math.random() * 70 + 5) + "%";
+        tear.classList.add("active");
+        screen.classList.add("torn");
+        setTimeout(function () { tear.classList.remove("active"); screen.classList.remove("torn"); }, 90 + Math.random() * 120);
+      }
+      setTimeout(doTear, 6000 + Math.random() * 9000);
+    }
+    setTimeout(doTear, 3500);
+
+    var tracking = document.getElementById("tracking");
+    function sweep() {
+      if (!reduceMotion && tracking) {
+        tracking.classList.remove("run");
+        void tracking.offsetWidth;
+        tracking.classList.add("run");
+      }
+      setTimeout(sweep, 9000 + Math.random() * 12000);
+    }
+    setTimeout(sweep, 5000);
+
+    var d20wrap = document.getElementById("d20");
+    var rollBtn = document.getElementById("roll-btn");
+    var diceResult = document.getElementById("dice-result");
+    var diceMsg = document.getElementById("dice-msg");
+    function flashScreen() {
+      document.body.classList.add("flash");
+      setTimeout(function () { document.body.classList.remove("flash"); }, 160);
+    }
+    function showRoll() {
+      var n = 1 + Math.floor(Math.random() * 20);
+      diceResult.textContent = n;
+      diceResult.classList.remove("crit", "fumble");
+      if (n === 20) {
+        diceResult.classList.add("crit");
+        diceMsg.textContent = msgNat20;
+        flashScreen();
+      } else if (n === 1) {
+        diceResult.classList.add("fumble");
+        diceMsg.textContent = msgNat1;
+      } else {
+        diceMsg.textContent = flavor[Math.floor(Math.random() * flavor.length)];
+      }
+    }
+    function roll() {
+      if (reduceMotion) { showRoll(); return; }
+      d20wrap.classList.add("rolling");
+      diceResult.classList.remove("crit", "fumble");
+      diceResult.textContent = "--";
+      setTimeout(function () {
+        d20wrap.classList.remove("rolling");
+        showRoll();
+      }, 420);
+    }
+    if (d20wrap) d20wrap.addEventListener("click", roll);
+    if (rollBtn) rollBtn.addEventListener("click", roll);
+
+    function jitter() {
+      var rows = document.querySelectorAll(".quest");
+      if (rows.length && !reduceMotion) {
+        var el = rows[Math.floor(Math.random() * rows.length)];
+        el.classList.add("jittered");
+        setTimeout(function () { el.classList.remove("jittered"); }, 140);
+      }
+      setTimeout(jitter, 8000 + Math.random() * 14000);
+    }
+    setTimeout(jitter, 6000);
+
+    var clock = document.getElementById("clock");
+    function tickClock() {
+      if (!clock) return;
+      var d = new Date();
+      clock.textContent = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
+      setTimeout(tickClock, 1000);
+    }
+    tickClock();
+  })();
+  </script>
+</body>
+</html>
