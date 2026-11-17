@@ -1,0 +1,150 @@
+  </main>
+
+  <footer class="bottombar">
+    <div class="ticker"><div class="ticker-inner"><span>{{ i18n "ticker" | default "welcome" }}</span><span aria-hidden="true">{{ i18n "ticker" | default "welcome" }}</span></div></div>
+    <div class="badges">
+      <span class="badge">TTRPG</span>
+      <span class="badge">d20</span>
+      <span class="badge">1024&times;768</span>
+      <span class="badge">GLITCH</span>
+      <span class="badge">XHTML 1.0</span>
+    </div>
+    <p class="footer-line">&copy; {{ now.Format "2006" }} {{ site.Title }} &middot; {{ i18n "footer_note" | default "best viewed at 1024x768" }} &middot; {{ i18n "footer_made" | default "hand-crafted HTML" }}</p>
+  </footer>
+
+  <div class="overlay scanlines" aria-hidden="true"></div>
+  <div class="overlay vignette" aria-hidden="true"></div>
+  <div class="overlay noise" aria-hidden="true"></div>
+  <div class="tear" id="tear" aria-hidden="true"></div>
+  <div class="tracking" id="tracking" aria-hidden="true"></div>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var bootLines = [
+      {{ i18n "hero_boot_1" | default "> booting halfapintpub.exe ..." | jsonify }},
+      {{ i18n "hero_boot_2" | default "> mounting /dev/d20 ... ok" | jsonify }},
+      {{ i18n "hero_boot_3" | default "> welcome, adventurer." | jsonify }}
+    ];
+    var flavor = [
+      {{ i18n "dice_flavor_1" | default "the dice have spoken" | jsonify }},
+      {{ i18n "dice_flavor_2" | default "a fair roll" | jsonify }},
+      {{ i18n "dice_flavor_3" | default "the tavern approves" | jsonify }}
+    ];
+    var msgNat20 = {{ i18n "dice_nat20" | default "NAT 20 — CRITICAL HIT!" | jsonify }};
+    var msgNat1 = {{ i18n "dice_nat1" | default "NAT 1... the table goes silent." | jsonify }};
+
+    var typedEl = document.getElementById("typed");
+    var lineIdx = 0, charIdx = 0, deleting = false;
+    function typeTick() {
+      if (reduceMotion) { if (typedEl) typedEl.textContent = bootLines[0]; return; }
+      var line = bootLines[lineIdx];
+      if (!deleting) {
+        charIdx++;
+        typedEl.textContent = line.slice(0, charIdx);
+        if (charIdx === line.length) { deleting = true; setTimeout(typeTick, 3800); return; }
+        setTimeout(typeTick, 45 + Math.random() * 60);
+      } else {
+        charIdx--;
+        typedEl.textContent = line.slice(0, charIdx);
+        if (charIdx === 0) { deleting = false; lineIdx = (lineIdx + 1) % bootLines.length; setTimeout(typeTick, 500); return; }
+        setTimeout(typeTick, 22);
+      }
+    }
+    if (typedEl) typeTick();
+
+    var title = document.getElementById("glitch-title");
+    function glitchTitle() {
+      if (!reduceMotion && title) {
+        title.classList.add("is-glitching");
+        setTimeout(function () { title.classList.remove("is-glitching"); }, 120 + Math.random() * 260);
+      }
+      setTimeout(glitchTitle, 1800 + Math.random() * 4200);
+    }
+    setTimeout(glitchTitle, 900);
+
+    var screen = document.getElementById("screen");
+    var tear = document.getElementById("tear");
+    function doTear() {
+      if (!reduceMotion && tear && screen) {
+        tear.style.top = (Math.random() * 70 + 5) + "%";
+        tear.classList.add("active");
+        screen.classList.add("torn");
+        setTimeout(function () { tear.classList.remove("active"); screen.classList.remove("torn"); }, 90 + Math.random() * 120);
+      }
+      setTimeout(doTear, 6000 + Math.random() * 9000);
+    }
+    setTimeout(doTear, 3500);
+
+    var tracking = document.getElementById("tracking");
+    function sweep() {
+      if (!reduceMotion && tracking) {
+        tracking.classList.remove("run");
+        void tracking.offsetWidth;
+        tracking.classList.add("run");
+      }
+      setTimeout(sweep, 9000 + Math.random() * 12000);
+    }
+    setTimeout(sweep, 5000);
+
+    var d20wrap = document.getElementById("d20");
+    var rollBtn = document.getElementById("roll-btn");
+    var diceResult = document.getElementById("dice-result");
+    var diceMsg = document.getElementById("dice-msg");
+    function flashScreen() {
+      document.body.classList.add("flash");
+      setTimeout(function () { document.body.classList.remove("flash"); }, 160);
+    }
+    function showRoll() {
+      var n = 1 + Math.floor(Math.random() * 20);
+      diceResult.textContent = n;
+      diceResult.classList.remove("crit", "fumble");
+      if (n === 20) {
+        diceResult.classList.add("crit");
+        diceMsg.textContent = msgNat20;
+        flashScreen();
+      } else if (n === 1) {
+        diceResult.classList.add("fumble");
+        diceMsg.textContent = msgNat1;
+      } else {
+        diceMsg.textContent = flavor[Math.floor(Math.random() * flavor.length)];
+      }
+    }
+    function roll() {
+      if (reduceMotion) { showRoll(); return; }
+      d20wrap.classList.add("rolling");
+      diceResult.classList.remove("crit", "fumble");
+      diceResult.textContent = "--";
+      setTimeout(function () {
+        d20wrap.classList.remove("rolling");
+        showRoll();
+      }, 420);
+    }
+    if (d20wrap) d20wrap.addEventListener("click", roll);
+    if (rollBtn) rollBtn.addEventListener("click", roll);
+
+    function jitter() {
+      var rows = document.querySelectorAll(".quest");
+      if (rows.length && !reduceMotion) {
+        var el = rows[Math.floor(Math.random() * rows.length)];
+        el.classList.add("jittered");
+        setTimeout(function () { el.classList.remove("jittered"); }, 140);
+      }
+      setTimeout(jitter, 8000 + Math.random() * 14000);
+    }
+    setTimeout(jitter, 6000);
+
+    var clock = document.getElementById("clock");
+    function tickClock() {
+      if (!clock) return;
+      var d = new Date();
+      clock.textContent = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) + ":" + ("0" + d.getSeconds()).slice(-2);
+      setTimeout(tickClock, 1000);
+    }
+    tickClock();
+  })();
+  </script>
+</body>
+</html>

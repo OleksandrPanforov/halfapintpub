@@ -1,20 +1,3 @@
-{{ define "title" }}{{ .Title }} - {{ site.Title }}{{ end }}
-
-{{ define "main" }}
-  <main>
-    <article>
-      <header class="article-header">
-        <h2>{{ .Title }}</h2>
-        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>{{ end }}
-      </header>
-      
-      <div class="content-body">{{ .Content }}</div>
-      
-      <footer class="article-footer">
-        <p>
-          <a href="{{ .Site.BaseURL }}" class="winamp-btn">&larr; {{ i18n "back_to_home" | default "Back to Home" }}</a>
-        </p>
-      </footer>
-    </article>
-  </main>
-{{ end }}
+{{ partial "crt/head.html" (dict "page" . "active" "about" "title" (printf "%s · %s" .Title site.Title)) }}
+{{ partial "crt/article.html" (dict "page" . "back" ("/" | relLangURL) "back_label" (i18n "back_to_home" | default "Back to Home")) }}
+{{ partial "crt/foot.html" . }}

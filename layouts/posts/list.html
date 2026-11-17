@@ -1,0 +1,14 @@
+{{ $posts := where site.RegularPages "Section" "posts" }}
+{{ $posts = $posts.ByDate.Reverse }}
+{{ partial "crt/head.html" (dict "page" . "active" "posts" "title" (printf "%s · %s" (i18n "questlog_title" | default "Quest log") site.Title)) }}
+
+  <section class="questlog">
+    <h2 class="section-title"><span class="prompt">&gt;</span> {{ i18n "questlog_title" | default "Quest log" }} <span class="count">[{{ len $posts }}]</span></h2>
+    {{ if $posts }}
+      {{ range $posts }}{{ partial "crt/quest-row.html" (dict "post" .) }}{{ end }}
+    {{ else }}
+      <p class="questlog-empty">{{ i18n "questlog_empty" | default "No quests yet." }}</p>
+    {{ end }}
+  </section>
+
+{{ partial "crt/foot.html" . }}

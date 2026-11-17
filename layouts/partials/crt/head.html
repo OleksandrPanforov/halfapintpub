@@ -1,0 +1,34 @@
+{{ $p := .page }}
+{{ $active := .active }}
+<!DOCTYPE html>
+<html lang="{{ $p.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.Params.description | default site.Title }}">
+  <meta name="theme-color" content="#050508">
+  <title>{{ .title }}</title>
+  <link rel="icon" type="image/png" href="{{ site.Params.logo | relURL }}">
+  <link rel="stylesheet" href="{{ "css/home.css" | relURL }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ "/" | relLangURL }}">
+      <img class="brand-logo" src="{{ site.Params.logo | relURL }}" alt="">
+      <span class="brand-name">{{ site.Title | upper }}</span>
+    </a>
+    <nav class="topnav">
+      <a href="{{ "/" | relLangURL }}"{{ if eq $active "home" }} class="active"{{ end }}>{{ i18n "nav_home" | default "Home" }}</a>
+      <a href="{{ "posts/" | relLangURL }}"{{ if eq $active "posts" }} class="active"{{ end }}>{{ i18n "nav_quests" | default "Quest log" }}</a>
+      <a href="{{ "about/" | relLangURL }}"{{ if eq $active "about" }} class="active"{{ end }}>{{ i18n "nav_about" | default "About" }}</a>
+    </nav>
+    <div class="top-right">
+      <span class="clock" id="clock">00:00:00</span>
+      <span class="lang-switch">
+        <a href="{{ $p.Permalink }}" hreflang="{{ $p.Lang }}" class="active">{{ $p.Lang | upper }}</a>
+        {{ range $p.Translations }}<a href="{{ .Permalink }}" hreflang="{{ .Lang }}">{{ .Lang | upper }}</a>{{ end }}
+      </span>
+    </div>
+  </header>
+
+  <main class="screen" id="screen">

@@ -1,0 +1,9 @@
+{{ $p := .page }}
+<section class="page-section">
+  <article class="panel post-panel">
+    <h1 class="glitch post-title" id="glitch-title" data-text="{{ $p.Title }}">{{ $p.Title }}</h1>
+    {{ with $p.Date }}<time class="post-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+    <div class="prose">{{ $p.Content }}</div>
+    <p class="back-row"><a class="btn" href="{{ .back }}">&larr; {{ .back_label | default "Back" }}</a></p>
+  </article>
+</section>

@@ -1,0 +1,9 @@
+{{ $p := .post }}
+<article class="quest">
+  {{ with $p.Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+  <div class="quest-body">
+    <h3><a class="quest-link" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+    {{ with $p.Description }}<p class="quest-desc">{{ . }}</p>{{ else }}{{ with $p.Summary }}<p class="quest-desc">{{ . | plainify | truncate 140 }}</p>{{ end }}{{ end }}
+  </div>
+  <a class="quest-open" href="{{ $p.RelPermalink }}">{{ i18n "quest_open" | default "open" }} &#9654;</a>
+</article>
