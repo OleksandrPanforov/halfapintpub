@@ -1,0 +1,32 @@
+{{ $entries := where site.RegularPages "Section" "guestbook" }}
+{{ $entries = $entries.ByDate.Reverse }}
+{{ partial "crt/head.html" (dict "page" . "active" "guestbook" "title" (printf "%s · %s" (i18n "guestbook_title" | default "Guestbook") site.Title)) }}
+
+  <section class="questlog">
+    <h2 class="section-title"><span class="prompt">&gt;</span> {{ i18n "guestbook_title" | default "Guestbook" }} <span class="count">[{{ len $entries }}]</span></h2>
+    <p class="guestbook-intro">{{ i18n "guestbook_intro" | default "Leave a mark on the tavern wall." }}</p>
+
+    <form class="panel sign-form" id="sign-form">
+      <h3 class="panel-label"><span class="dot"></span>{{ i18n "guestbook_sign" | default "Sign the guestbook" }}</h3>
+      <input type="text" id="sign-name" maxlength="60" placeholder="{{ i18n "guestbook_name" | default "your name / nickname" }}" required>
+      <textarea id="sign-msg" rows="4" maxlength="500" placeholder="{{ i18n "guestbook_message" | default "your message..." }}" required></textarea>
+      <button class="btn btn-primary" type="submit">{{ i18n "guestbook_submit" | default "Sign" }}</button>
+      <p class="sign-note">{{ i18n "guestbook_note" | default "" }}</p>
+    </form>
+
+    {{ if $entries }}
+      {{ range $entries }}
+        <article class="sign">
+          <div class="sign-head">
+            <span class="sign-name">{{ .Title }}</span>
+            {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+          </div>
+          <div class="prose">{{ .Content }}</div>
+        </article>
+      {{ end }}
+    {{ else }}
+      <p class="questlog-empty">{{ i18n "guestbook_empty" | default "The book is empty... be the first to sign!" }}</p>
+    {{ end }}
+  </section>
+
+{{ partial "crt/foot.html" . }}

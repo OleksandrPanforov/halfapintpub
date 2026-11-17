@@ -144,6 +144,22 @@
       setTimeout(tickClock, 1000);
     }
     tickClock();
+
+    var signForm = document.getElementById("sign-form");
+    if (signForm) {
+      signForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var nameEl = document.getElementById("sign-name");
+        var msgEl = document.getElementById("sign-msg");
+        var name = nameEl.value.trim();
+        var msg = msgEl.value.trim();
+        if (!name || !msg) return;
+        var title = "Guestbook: " + name;
+        var body = "**Name:** " + name + "\n\n**Message:**\n" + msg + "\n\n---\n_Signed via the guestbook at halfapintpub.com_";
+        window.open("https://github.com/OleksandrPanforov/halfapintpub/issues/new?title=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(body), "_blank");
+        signForm.reset();
+      });
+    }
   })();
   </script>
 </body>

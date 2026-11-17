@@ -20,6 +20,7 @@
     <nav class="topnav">
       <a href="{{ "/" | relLangURL }}"{{ if eq $active "home" }} class="active"{{ end }}>{{ i18n "nav_home" | default "Home" }}</a>
       <a href="{{ "posts/" | relLangURL }}"{{ if eq $active "posts" }} class="active"{{ end }}>{{ i18n "nav_quests" | default "Quest log" }}</a>
+      <a href="{{ "guestbook/" | relLangURL }}"{{ if eq $active "guestbook" }} class="active"{{ end }}>{{ i18n "nav_guestbook" | default "Guestbook" }}</a>
       <a href="{{ "about/" | relLangURL }}"{{ if eq $active "about" }} class="active"{{ end }}>{{ i18n "nav_about" | default "About" }}</a>
     </nav>
     <div class="top-right">
