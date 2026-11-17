@@ -27,23 +27,6 @@
     {{ else }}
       <p class="questlog-empty">{{ i18n "guestbook_empty" | default "The book is empty... be the first to sign!" }}</p>
     {{ end }}
-
-    <h2 class="section-title giscus-title"><span class="prompt">&gt;</span> {{ i18n "guestbook_live" | default "Live wall" }}</h2>
-    <div class="giscus"></div>
-    <script src="https://giscus.app/client.js"
-      data-repo="OleksandrPanforov/halfapintpub"
-      data-repo-id="{{ site.Params.giscus_repo_id }}"
-      data-category="{{ site.Params.giscus_category | default "General" }}"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="dark_dimmed"
-      data-lang="{{ .Lang }}"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async></script>
   </section>
 
 {{ partial "crt/foot.html" . }}
