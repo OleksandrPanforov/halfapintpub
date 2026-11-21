@@ -826,6 +826,18 @@ body.flash .topbar {
   box-shadow: 0 0 14px rgba(138, 43, 226, 0.25);
 }
 
+.prose figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.prose figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
 .prose hr {
   margin: 1.2rem 0;
   border: none;

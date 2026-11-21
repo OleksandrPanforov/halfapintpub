@@ -9,7 +9,7 @@ language: en
 
 
 <figure>
-    <img src="../images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
+    <img src="/images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
          alt="Червоні й сині хаотичні візерунки у цифровому абстрактному зображенні">
     <figcaption><span style="font-size:0.8em;"><i>Якщо не можеш контролювати хаос, спробуй його осягнути. Автор не несе ніякої відповідальності за надмірне споглядання безодні.</i></span></figcaption>
 </figure>
@@ -45,7 +45,7 @@ language: en
 
 
 <figure>
-    <img src="../images/fantasy-g0d51e91d7_1920.jpg"
+    <img src="/images/fantasy-g0d51e91d7_1920.jpg"
          alt="Людина перед силуетом жахливої істоти позаду матового скла">
     <figcaption><span style="font-size:0.8em;"><i>Я прорахував і зважив усі чинники зіткнення, та з рахуванням у мене проблеми. Маєш запасний лист персонажа?</i></span></figcaption>
 </figure>
@@ -109,7 +109,7 @@ language: en
 </div>
 
 <figure>
-    <img src="../images/robert-coelho-A5hjI0-6yHk-unsplash.jpg"
+    <img src="/images/robert-coelho-A5hjI0-6yHk-unsplash.jpg"
          alt="Настільні ігрові фігурки перед розмитими фрагментами дракону або монстра">
     <figcaption><span style="font-size:0.8em;"><i>Ані хрест, ані пістолет не вразили невимовно жахливу істоту з глибин часу і простору. Кидайте на безумство.</i></span></figcaption>
 </figure>
@@ -142,7 +142,7 @@ language: en
 </div>
 
 <figure>
-    <img src="../images/piret-ilver-98MbUldcDJY-unsplash.jpg"
+    <img src="/images/piret-ilver-98MbUldcDJY-unsplash.jpg"
          alt="Старовинні ваги та гирі вітринного магазину">
     <figcaption><span style="font-size:0.8em;"><i>Ти був зважений, ти був виміряний. Каміння падають, ти помираєш.</i></span></figcaption>
 </figure>
