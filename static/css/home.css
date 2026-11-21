@@ -34,6 +34,8 @@ html {
 
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   background: var(--bg);
   background-image:
@@ -283,6 +285,8 @@ body.flash .topbar {
 .screen {
   position: relative;
   z-index: 10;
+  flex: 1 0 auto;
+  width: 100%;
   max-width: 980px;
   margin: 0 auto;
   padding: 96px 20px 48px;
