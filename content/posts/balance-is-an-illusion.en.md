@@ -9,7 +9,7 @@ language: en
 
 
 <figure>
-    <img src="../images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
+    <img src="/images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
          alt="Red and blue swirling patterns in an abstract digital image">
     <figcaption><span style="font-size:0.8em;"><i>If you cannot control chaos, try to comprehend it. The author accepts no responsibility for excessive contemplation of the abyss.</i></span></figcaption>
 </figure>
@@ -46,7 +46,7 @@ However, let us take this in order.
 
 
 <figure>
-    <img src="../images/fantasy-g0d51e91d7_1920.jpg"
+    <img src="/images/fantasy-g0d51e91d7_1920.jpg"
          alt="A person facing the silhouette of a terrifying creature behind frosted glass">
     <figcaption><span style="font-size:0.8em;"><i>I calculated and weighed every factor in the encounter, but I have trouble with the calculation. Do you have a spare character sheet?</i></span></figcaption>
 </figure>
@@ -112,7 +112,7 @@ Okay, I thought, if the CR approach does not help, could the answer be found in 
 </div>
 
 <figure>
-    <img src="../images/robert-coelho-A5hjI0-6yHk-unsplash.jpg"
+    <img src="/images/robert-coelho-A5hjI0-6yHk-unsplash.jpg"
          alt="Tabletop game miniatures in front of a blurred dragon or monster">
     <figcaption><span style="font-size:0.8em;"><i>Neither a cross nor a pistol impressed the unspeakably horrific creature from the depths of time and space. Make a sanity check.</i></span></figcaption>
 </figure>
@@ -145,7 +145,7 @@ And yet, when we want realism to uncover a secret cult, we usually sit down at a
 </div>
 
 <figure>
-    <img src="../images/piret-ilver-98MbUldcDJY-unsplash.jpg"
+    <img src="/images/piret-ilver-98MbUldcDJY-unsplash.jpg"
          alt="Antique scales and weights displayed in a shop window">
     <figcaption><span style="font-size:0.8em;"><i>You have been weighed, you have been measured. Rocks fall, you die.</i></span></figcaption>
 </figure>

@@ -62,7 +62,7 @@ body {
 
 .scanlines {
   z-index: 90;
-  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0 1px, transparent 1px 3px);
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0 1px, transparent 1px 3px);
 }
 
 .scanlines::after {
@@ -95,7 +95,7 @@ body {
 
 .noise {
   z-index: 92;
-  opacity: 0.07;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='120'%20height='120'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'/%3E%3C/filter%3E%3Crect%20width='120'%20height='120'%20filter='url(%23n)'%20opacity='0.6'/%3E%3C/svg%3E");
   animation: noise-shift 1.2s steps(4) infinite;
 }
@@ -739,7 +739,11 @@ body.flash .topbar {
 /* === Single pages (post / about / 404) === */
 .page-section { margin-bottom: 3rem; }
 
-.post-panel { text-align: left; }
+.post-panel {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: left;
+}
 
 .post-title {
   margin-bottom: 0.4rem;
@@ -760,11 +764,11 @@ body.flash .topbar {
 /* === Prose content === */
 .prose {
   color: var(--text);
-  font-size: 0.92rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.85;
 }
 
-.prose p { margin-bottom: 1rem; }
+.prose p { margin-bottom: 1.15rem; }
 .prose p:last-child { margin-bottom: 0; }
 
 .prose a {
@@ -780,14 +784,15 @@ body.flash .topbar {
 
 .prose h2,
 .prose h3 {
-  margin: 1.4rem 0 0.6rem;
+  margin: 2rem 0 0.75rem;
   color: var(--green);
   letter-spacing: 0.1em;
 }
 
 .prose ul,
-.prose ol { margin: 0 0 1rem 1.4rem; }
-.prose li { margin-bottom: 0.3rem; }
+.prose ol { margin: 0 0 1.15rem 1.6rem; }
+.prose li { margin-bottom: 0.45rem; }
+.prose li::marker { color: var(--purple); }
 
 .prose code {
   padding: 1px 6px;
@@ -824,6 +829,18 @@ body.flash .topbar {
   max-width: 100%;
   border: 1px solid var(--line);
   box-shadow: 0 0 14px rgba(138, 43, 226, 0.25);
+}
+
+.prose figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.prose figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
 }
 
 .prose hr {
