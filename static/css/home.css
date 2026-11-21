@@ -18,6 +18,7 @@
   --gold: #ffd166;
   --red: #ff3355;
   --font-mono: "Courier New", ui-monospace, Menlo, Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -764,6 +765,7 @@ body.flash .topbar {
 /* === Prose content === */
 .prose {
   color: var(--text);
+  font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.85;
 }
@@ -786,6 +788,7 @@ body.flash .topbar {
 .prose h3 {
   margin: 2rem 0 0.75rem;
   color: var(--green);
+  font-family: var(--font-mono);
   letter-spacing: 0.1em;
 }
 
@@ -799,6 +802,7 @@ body.flash .topbar {
   background: #07070d;
   border: 1px solid var(--line);
   color: var(--gold);
+  font-family: var(--font-mono);
   font-size: 0.85em;
 }
 
@@ -809,6 +813,7 @@ body.flash .topbar {
   background: #07070d;
   border: 1px solid var(--line);
   border-left: 3px solid var(--purple);
+  font-family: var(--font-mono);
 }
 
 .prose pre code {
