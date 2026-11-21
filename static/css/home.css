@@ -238,6 +238,18 @@ body.flash .topbar {
   box-shadow: 0 0 10px rgba(57, 255, 106, 0.6);
 }
 
+.topnav a.nav-help {
+  color: var(--gold);
+  border-color: rgba(255, 209, 102, 0.35);
+}
+
+.topnav a.nav-help:hover {
+  color: #1a1204;
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255, 209, 102, 0.6);
+}
+
 .top-right {
   margin-left: auto;
   display: flex;

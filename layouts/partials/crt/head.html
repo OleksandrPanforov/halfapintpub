@@ -22,6 +22,7 @@
       <a href="{{ "posts/" | relLangURL }}"{{ if eq $active "posts" }} class="active"{{ end }}>{{ i18n "nav_quests" | default "Quest log" }}</a>
       <a href="{{ "guestbook/" | relLangURL }}"{{ if eq $active "guestbook" }} class="active"{{ end }}>{{ i18n "nav_guestbook" | default "Guestbook" }}</a>
       <a href="{{ "about/" | relLangURL }}"{{ if eq $active "about" }} class="active"{{ end }}>{{ i18n "nav_about" | default "About" }}</a>
+      <a href="https://skhron.net/" target="_blank" rel="noopener noreferrer" class="nav-help">{{ i18n "nav_help" | default "Help Ukraine" }}</a>
     </nav>
     <div class="top-right">
       <span class="clock" id="clock">00:00:00</span>
