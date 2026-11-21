@@ -740,11 +740,7 @@ body.flash .topbar {
 /* === Single pages (post / about / 404) === */
 .page-section { margin-bottom: 3rem; }
 
-.post-panel {
-  max-width: 740px;
-  margin: 0 auto;
-  text-align: left;
-}
+.post-panel { text-align: left; }
 
 .post-title {
   margin-bottom: 0.4rem;
@@ -944,3 +940,64 @@ body.flash .topbar {
 
 .giscus-title { margin-top: 2.5rem; }
 .giscus { margin: 0 0 3rem; }
+
+/* === 404 spinning abyss === */
+.abyss {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  transition: transform 0.25s ease-out;
+}
+
+.abyss::before {
+  content: "";
+  position: absolute;
+  width: 170vmax;
+  height: 170vmax;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(138, 43, 226, 0.22) 0deg 10deg,
+    transparent 10deg 26deg,
+    rgba(0, 229, 255, 0.1) 26deg 34deg,
+    transparent 34deg 55deg,
+    rgba(255, 79, 216, 0.14) 55deg 62deg,
+    transparent 62deg 90deg
+  );
+  animation: abyss-spin 26s linear infinite;
+  -webkit-mask-image: radial-gradient(circle, transparent 0 16%, #000 32%, transparent 70%);
+  mask-image: radial-gradient(circle, transparent 0 16%, #000 32%, transparent 70%);
+}
+
+.abyss::after {
+  content: "";
+  position: absolute;
+  width: 36vmin;
+  height: 36vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000 0 52%, rgba(138, 43, 226, 0.4) 74%, transparent 100%);
+  box-shadow: 0 0 90px rgba(138, 43, 226, 0.55);
+  animation: abyss-pulse 6s ease-in-out infinite;
+}
+
+@keyframes abyss-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes abyss-pulse {
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 0 130px rgba(0, 229, 255, 0.35);
+  }
+}
+
+.abyss-caption {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+}

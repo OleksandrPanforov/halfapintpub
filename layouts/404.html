@@ -1,11 +1,14 @@
 {{ partial "crt/head.html" (dict "page" . "active" "" "title" (printf "404 · %s" site.Title)) }}
 
+  <div class="abyss" aria-hidden="true"></div>
+
   <section class="questlog">
     <h2 class="section-title"><span class="prompt">&gt;</span> 404</h2>
     <article class="panel post-panel">
       <h1 class="glitch post-title" id="glitch-title" data-text="404">404</h1>
       <div class="prose">
         <p>{{ i18n "404_message" | default "ERROR 404: page not found — the dice rolled off the table." }}</p>
+        <p class="abyss-caption">{{ i18n "404_edge" | default "you stand at the edge. the abyss spins anyway." }}</p>
       </div>
       <p class="back-row"><a class="btn" href="{{ "/" | relLangURL }}">&larr; {{ i18n "back_to_home" | default "Back to Home" }}</a></p>
     </article>
