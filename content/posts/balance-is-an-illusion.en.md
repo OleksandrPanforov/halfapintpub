@@ -13,6 +13,7 @@ language: en
          alt="Red and blue swirling patterns in an abstract digital image">
     <figcaption><span style="font-size:0.8em;"><i>If you cannot control chaos, try to comprehend it. The author accepts no responsibility for excessive contemplation of the abyss.</i></span></figcaption>
 </figure>
+<br>
 
 *"This is not balanced and is broken." - players, at various times.*
 
@@ -49,6 +50,7 @@ However, let us take this in order.
          alt="A person facing the silhouette of a terrifying creature behind frosted glass">
     <figcaption><span style="font-size:0.8em;"><i>I calculated and weighed every factor in the encounter, but I have trouble with the calculation. Do you have a spare character sheet?</i></span></figcaption>
 </figure>
+<br>
 
 
 
@@ -114,6 +116,7 @@ Okay, I thought, if the CR approach does not help, could the answer be found in 
          alt="Tabletop game miniatures in front of a blurred dragon or monster">
     <figcaption><span style="font-size:0.8em;"><i>Neither a cross nor a pistol impressed the unspeakably horrific creature from the depths of time and space. Make a sanity check.</i></span></figcaption>
 </figure>
+<br>
 
 
 Call of Cthulhu may be my favorite system for this reason: there are things and phenomena that cannot be defeated, only delayed. You can kill goblins for a century, but you will never gain enough power to attack Azathoth. 
@@ -146,6 +149,7 @@ And yet, when we want realism to uncover a secret cult, we usually sit down at a
          alt="Antique scales and weights displayed in a shop window">
     <figcaption><span style="font-size:0.8em;"><i>You have been weighed, you have been measured. Rocks fall, you die.</i></span></figcaption>
 </figure>
+<br>
 
 Even if the game master sends a full party of evil character duplicates against the group, they will not be in equal circumstances.
 
