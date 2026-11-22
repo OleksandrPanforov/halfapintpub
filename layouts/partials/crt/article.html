@@ -2,7 +2,15 @@
 <section class="page-section">
   <article class="panel post-panel">
     <h1 class="glitch post-title" id="glitch-title" data-text="{{ $p.Title }}">{{ $p.Title }}</h1>
-    {{ with $p.Date }}<time class="post-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+    <p class="post-meta">{{ with $p.Date }}<span class="prompt">{{ i18n "post_file" | default "FILE" }} //</span> <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time><span class="meta-sep">&middot;</span>{{ end }}{{ $p.Lang | upper }}</p>
+    {{ with $p.Params.hook }}<div class="hook">{{ . | markdownify }}</div>{{ end }}
+    {{ with $p.Params.hero_image }}
+    <figure class="hero-figure">
+      <img src="{{ . }}" alt="{{ $p.Params.hero_alt | default "" }}">
+      {{ with $p.Params.hero_caption }}<figcaption><span class="cap-prompt">&gt;</span> {{ . | markdownify }}</figcaption>{{ end }}
+    </figure>
+    {{ end }}
+    {{ with $p.Params.player_quote }}<div class="player-quote">{{ . | markdownify }}</div>{{ end }}
     <div class="prose">{{ $p.Content }}</div>
     <p class="back-row"><a class="btn" href="{{ .back }}">&larr; {{ .back_label | default "Back" }}</a></p>
   </article>

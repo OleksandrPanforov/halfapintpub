@@ -136,6 +136,18 @@
     }
     setTimeout(jitter, 6000);
 
+    var prog = document.getElementById("progress");
+    function updateProgress() {
+      if (!prog) return;
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var top = window.pageYOffset || doc.scrollTop || 0;
+      prog.style.width = (max > 0 ? Math.min(100, top / max * 100) : 0) + "%";
+    }
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+
     var clock = document.getElementById("clock");
     function tickClock() {
       if (!clock) return;

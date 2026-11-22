@@ -2,28 +2,19 @@
 title: "Balance is Illusory. Balance in D&D Is Even More Illusory."
 date: 2022-10-27
 language: en
+hook: "That is why, in my opinion, if you need to maintain game-mechanical balance in a tabletop RPG, then you should not maintain it at all."
+hero_image: "/images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
+hero_alt: "Red and blue swirling patterns in an abstract digital image"
+hero_caption: "If you cannot control chaos, try to comprehend it. The author accepts no responsibility for excessive contemplation of the abyss."
+player_quote: "*\"This is not balanced and is broken.\" - players, at various times.*"
 ---
-
-
-**That is why, in my opinion, if you need to maintain game-mechanical balance in a tabletop RPG, then you should not maintain it at all.**
-
-
-<figure>
-    <img src="/images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
-         alt="Red and blue swirling patterns in an abstract digital image">
-    <figcaption><span style="font-size:0.8em;"><i>If you cannot control chaos, try to comprehend it. The author accepts no responsibility for excessive contemplation of the abyss.</i></span></figcaption>
-</figure>
-<br>
-
-*"This is not balanced and is broken." - players, at various times.*
-
 
 I should note at once that this post deals mostly with D&D 5e. I will clearly mark examples taken from other systems.
 
 The question of encounter balancing pains both beginning game masters and people who have moved to a new system. In D&D, the war-game heritage is still felt despite the system's evolution across five editions. Challenge Ratings (CR), character strength calculations, and the sheer pile of numbers frustrate me. Mostly because I value slightly different aspects of tabletop roleplaying. On top of that, I am deeply convinced that the concept of CR makes sense only as training wheels for learning to ride a bicycle. At some point, consciously or not, you learn to move forward without help.
 
-
 However, let us take this in order.
+{{< toc >}}
 <ol>
 <li><a href="#challenge-rating-and-the-famous-heroes-of-eberron">Challenge Rating and the famous heroes of Eberron.</a></li>
 
@@ -31,10 +22,11 @@ However, let us take this in order.
 
 <li><a href="#is-balance-about-fairness">Is balance about fairness?</a></li>
 </ol>
+{{< /toc >}}
 
 ## Challenge Rating and the famous heroes of Eberron
 
-<div style="text-align: center;">
+{{< takeaways >}}
 
 **Low-CR monsters can kill a party, even when the outcome is unlikely.**
 
@@ -42,18 +34,9 @@ However, let us take this in order.
 
 **CR's predictability and repeatability are surprisingly low.**
 
-</div>
+{{< /takeaways >}}
 
-
-<figure>
-    <img src="/images/fantasy-g0d51e91d7_1920.jpg"
-         alt="A person facing the silhouette of a terrifying creature behind frosted glass">
-    <figcaption><span style="font-size:0.8em;"><i>I calculated and weighed every factor in the encounter, but I have trouble with the calculation. Do you have a spare character sheet?</i></span></figcaption>
-</figure>
-<br>
-
-
-
+{{< figure src="/images/fantasy-g0d51e91d7_1920.jpg" alt="A person facing the silhouette of a terrifying creature behind frosted glass" caption="I calculated and weighed every factor in the encounter, but I have trouble with the calculation. Do you have a spare character sheet?" >}}
 
 I need to start from a little farther away so the examples have enough context. In one of my campaigns, an early conflict arose after the first story arc. It was an encyclopedic conflict of interests. Part of the group wanted more narrative. With shining eyes and in overlapping voices, they could roleplay conversations with NPCs or one another for an entire session. The other part wanted more combat scenes. Brutal fights built around tactical planning against an overwhelming enemy are their preferred style. Who was right in that conflict? Everyone, because everyone enjoys the game in their own way.
 
@@ -77,7 +60,6 @@ As usual, the combat group triggered the unlikely scenario that I had buried in 
 
 The narrative group decided to return to the scene of the crime and investigate a building they had previously ignored, just as they ignored a long rest because more urgent matters were at hand.
 
-
 Situations like these happened more often than I wanted to admit, and I started asking myself:
 
 What did I take away from this experience?
@@ -98,10 +80,9 @@ The first point is too broad to discuss here, while the second can be expressed 
 
 Okay, I thought, if the CR approach does not help, could the answer be found in other systems?
 
-
 ## Is balance about realism?
 
-<div style="text-align: center;">
+{{< takeaways >}}
 
 **In a system where characters are close to real people in strength and skill, they normally cannot overcome a substantial portion of the threats around them.**
 
@@ -109,15 +90,9 @@ Okay, I thought, if the CR approach does not help, could the answer be found in 
 
 **In that case, the balance of power is far from equal.**
 
-</div>
+{{< /takeaways >}}
 
-<figure>
-    <img src="/images/robert-coelho-A5hjI0-6yHk-unsplash.jpg"
-         alt="Tabletop game miniatures in front of a blurred dragon or monster">
-    <figcaption><span style="font-size:0.8em;"><i>Neither a cross nor a pistol impressed the unspeakably horrific creature from the depths of time and space. Make a sanity check.</i></span></figcaption>
-</figure>
-<br>
-
+{{< figure src="/images/robert-coelho-A5hjI0-6yHk-unsplash.jpg" alt="Tabletop game miniatures in front of a blurred dragon or monster" caption="Neither a cross nor a pistol impressed the unspeakably horrific creature from the depths of time and space. Make a sanity check." >}}
 
 Call of Cthulhu may be my favorite system for this reason: there are things and phenomena that cannot be defeated, only delayed. You can kill goblins for a century, but you will never gain enough power to attack Azathoth. 
 
@@ -127,13 +102,11 @@ In D&D, with enough preparation, magic items, and determination, heroes can go a
 
 It is entirely realistic, and in this way, the balance shifts so far from equality that victory is achieved against the odds rather than because of them. That is what makes it valuable: it feels almost like real life, where one can accomplish more than ever expected despite difficulties. Here, the absence of balance as a concept adds color to the story players tell together around the table.
 
-
 And yet, when we want realism to uncover a secret cult, we usually sit down at a table rather than carry a revolver around garages. So, along with a desire for "real" events, something else must be involved.
-
 
 ## Is balance about fairness?
 
-<div style="text-align: center;">
+{{< takeaways >}}
 
 **Attack when you have excessive force. Defend when your force is insufficient.**
 
@@ -142,14 +115,9 @@ And yet, when we want realism to uncover a secret cult, we usually sit down at a
 **When the desired outcome is to win, it harms everyone at the table.**
 
 **Fairness has nothing to do with it.**
-</div>
+{{< /takeaways >}}
 
-<figure>
-    <img src="/images/piret-ilver-98MbUldcDJY-unsplash.jpg"
-         alt="Antique scales and weights displayed in a shop window">
-    <figcaption><span style="font-size:0.8em;"><i>You have been weighed, you have been measured. Rocks fall, you die.</i></span></figcaption>
-</figure>
-<br>
+{{< figure src="/images/piret-ilver-98MbUldcDJY-unsplash.jpg" alt="Antique scales and weights displayed in a shop window" caption="You have been weighed, you have been measured. Rocks fall, you die." >}}
 
 Even if the game master sends a full party of evil character duplicates against the group, they will not be in equal circumstances.
 
@@ -161,15 +129,12 @@ This is the game master's confrontation with the other players. It is a cold war
 
 This and much more can be found in the subreddit [r/rpghorrorstories](https://www.reddit.com/r/rpghorrorstories/).
 
-
 The main question is, why did the players gather?
 
 There is no right answer unless everyone is having fun. One of my parties met regularly to talk with one another. The game was merely a fun addition.
 
 In other parties, players repeatedly made absurdly powerful characters, and the goal was to break the story. It was a pure confrontation between the game master and the other players. But since everyone understood that this was the goal, there was no problem.
 
-
 For me, I have concluded that what I value in tabletop roleplaying is collaborative storytelling. To tell those stories, the system is more of a set of tools and recommendations than a restriction or an obligation to follow rules rigidly. Bend the system, break the rules, create your own - as long as everyone is having fun, this is your shared game, and it is wonderful. For everything else, there are ordinary board games. Even in chess, however, the player who moves first has a certain advantage.
-
 
 **That is why, in my opinion, if you need to maintain game-mechanical balance in a tabletop RPG, then you should not maintain it at all.**
