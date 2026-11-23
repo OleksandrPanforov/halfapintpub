@@ -1023,6 +1023,45 @@ body.flash .topbar {
 
 .aside-note::before { content: "~ "; color: var(--pink); font-style: normal; }
 
+/* External links get a subtle arrow */
+.prose a[href^="http"]::after {
+  content: " ↗";
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+/* === About page === */
+.about-panel::before {
+  background: linear-gradient(90deg, var(--gold), var(--pink), var(--cyan));
+}
+
+/* Portrait: framed "character sheet" photo at the top */
+.about-panel .prose > figure:first-child {
+  max-width: 300px;
+  margin: 0 auto 1.8rem;
+  padding: 8px;
+  background: #07070d;
+  border: 1px solid var(--line);
+  box-shadow:
+    0 0 0 1px #000,
+    -4px 0 0 rgba(255, 79, 216, 0.18),
+    4px 0 0 rgba(0, 229, 255, 0.18),
+    0 0 24px rgba(138, 43, 226, 0.2);
+}
+
+.about-panel .prose > figure:first-child img {
+  display: block;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+}
+
+.about-panel .prose h2 {
+  margin-top: 0.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.35);
+}
+
 /* Scroll progress bar */
 .progress {
   position: fixed;
