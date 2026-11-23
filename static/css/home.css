@@ -716,6 +716,11 @@ body.flash .topbar {
 }
 
 @media (max-width: 640px) {
+  .about-panel .prose { display: block; }
+  .about-panel .prose > figure:first-child {
+    max-width: 200px;
+    margin: 0 auto 1.6rem;
+  }
   .topbar {
     height: auto;
     flex-wrap: wrap;
@@ -1035,10 +1040,17 @@ body.flash .topbar {
   background: linear-gradient(90deg, var(--gold), var(--pink), var(--cyan));
 }
 
-/* Portrait: framed "character sheet" photo at the top */
+/* Portrait: framed "character sheet" photo beside the text */
+.about-panel .prose {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  column-gap: 1.8rem;
+  align-items: start;
+}
+
 .about-panel .prose > figure:first-child {
-  max-width: 300px;
-  margin: 0 auto 1.8rem;
+  grid-column: 1;
+  margin: 0;
   padding: 8px;
   background: #07070d;
   border: 1px solid var(--line);
@@ -1048,6 +1060,8 @@ body.flash .topbar {
     4px 0 0 rgba(0, 229, 255, 0.18),
     0 0 24px rgba(138, 43, 226, 0.2);
 }
+
+.about-panel .prose > *:not(:first-child) { grid-column: 2; }
 
 .about-panel .prose > figure:first-child img {
   display: block;
