@@ -26,3 +26,16 @@ Half A Pint Pub is a reference to my Eberron campaign, and Eberron is love.
 And last, but not least, 3D printing. It's invaluable for tabletop roleplaying games.
 
 My [Printables](https://www.printables.com/@Nod_300014)
+
+## Photo credits
+
+Photos in the posts are from [Unsplash](https://unsplash.com/):
+
+- [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski) — [red & blue fluid abstract](https://unsplash.com/photos/BP2RioglKXk)
+- [Robert Coelho](https://unsplash.com/@robert_coelho) — [tabletop miniatures](https://unsplash.com/photos/A5hjI0-6yHk)
+- [Piret Ilver](https://unsplash.com/@saltsup) — [antique scales](https://unsplash.com/photos/98MbUldcDJY)
+- [Austin Chan](https://unsplash.com/@austinchan) — [neon sign](https://unsplash.com/photos/ukzHlkoz1IE)
+- [Nika Benedictova](https://unsplash.com/@nika_benedictova) — [polyhedral dice](https://unsplash.com/photos/1k6Kjg15QW8)
+- [Alexander Mils](https://unsplash.com/@alexandermils) — [dollar banknotes](https://unsplash.com/photos/lCPhGxs7pww)
+- [Jp Valery](https://unsplash.com/@jpvalery) — [burning banknotes](https://unsplash.com/photos/blOLCO2K4M0)
+- [Pascal Habermann](https://unsplash.com/@pascal_habermann) — [summit above the clouds](https://unsplash.com/photos/pqHRNS8Mojc)

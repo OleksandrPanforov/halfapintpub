@@ -24,3 +24,15 @@ language: uk
 І останній, проте не за значущістю аспект - 3д друк. В площині НРІ це взагалі безцінно.
 
 Мій [Printables](https://www.printables.com/@Nod_300014)
+## Автори фото
+
+Фото в дописах — з [Unsplash](https://unsplash.com/):
+
+- [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski) — [червоно-синя абстракція](https://unsplash.com/photos/BP2RioglKXk)
+- [Robert Coelho](https://unsplash.com/@robert_coelho) — [мініатюри на столі](https://unsplash.com/photos/A5hjI0-6yHk)
+- [Piret Ilver](https://unsplash.com/@saltsup) — [антикварні ваги](https://unsplash.com/photos/98MbUldcDJY)
+- [Austin Chan](https://unsplash.com/@austinchan) — [неонова вивіска](https://unsplash.com/photos/ukzHlkoz1IE)
+- [Nika Benedictova](https://unsplash.com/@nika_benedictova) — [поліедричні кубики](https://unsplash.com/photos/1k6Kjg15QW8)
+- [Alexander Mils](https://unsplash.com/@alexandermils) — [доларові купюри](https://unsplash.com/photos/lCPhGxs7pww)
+- [Jp Valery](https://unsplash.com/@jpvalery) — [палаючі купюри](https://unsplash.com/photos/blOLCO2K4M0)
+- [Pascal Habermann](https://unsplash.com/@pascal_habermann) — [вершина над хмарами](https://unsplash.com/photos/pqHRNS8Mojc)

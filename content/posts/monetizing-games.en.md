@@ -99,7 +99,7 @@ A separate category of GMs run games for donations to various worthy causes. I'm
 
 {{< /takeaways >}}
 
-{{< figure src="/images/jp-valery-blOLCO2K4M0-unsplash.jpg" alt="A person standing on a rocky summit above the clouds" caption="Sometimes you have enough time and money to simply spend time on your hobby. Let the whole world burn; you've got more pressing things to do." >}}
+{{< figure src="/images/jp-valery-blOLCO2K4M0-unsplash.jpg" alt="A hand holding burning dollar bills" caption="Sometimes you have enough time and money to simply spend time on your hobby. Let the whole world burn; you've got more pressing things to do." >}}
 
 It's the same division as before, based on how well you know your players. Overall, it's still about positioning yourself. No financial motivation? Run games for free.
 
@@ -153,7 +153,7 @@ Or you can chip in with friends for the rulebook of a new system everyone is cur
 
 {{< /takeaways >}}
 
-{{< figure src="/images/pascal-habermann-pqHRNS8Mojc-unsplash.jpg" alt="A hand holding burning dollar bills" caption="You've reached the end of the post, where there was supposed to be an answer to a simple question, but now you're standing here alone, wondering what to do." >}}
+{{< figure src="/images/pascal-habermann-pqHRNS8Mojc-unsplash.jpg" alt="A person standing on a rocky summit above the clouds" caption="You've reached the end of the post, where there was supposed to be an answer to a simple question, but now you're standing here alone, wondering what to do." >}}
 
 I once heard that the secret to success is: "Passion first, money second."
 
