@@ -27,7 +27,7 @@ Spoiler: they're free.
 
 ​
 
-Half Pint Pub is a reference to my Eberron campaign, and Eberron is love.
+Half A Pint Pub is a reference to my Eberron campaign, and Eberron is love.
 
 ​
 

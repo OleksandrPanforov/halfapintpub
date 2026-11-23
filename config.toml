@@ -13,7 +13,7 @@ disableKinds = ["taxonomy", "term"]
   [languages.en]
     label = "English"
     weight = 2
-    title = "Half Pint Pub"
+    title = "Half A Pint Pub"
 
 [params]
   description = "TTRPG adventures, hobby projects, and late-2000s nostalgia"

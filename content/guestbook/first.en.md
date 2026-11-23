@@ -1,5 +1,5 @@
 ---
-title: "Half Pint Pub"
+title: "Half A Pint Pub"
 date: 2026-11-17
 language: en
 ---
