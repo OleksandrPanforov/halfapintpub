@@ -713,14 +713,15 @@ body.flash .topbar {
 @media (max-width: 820px) {
   .quest { grid-template-columns: 1fr; gap: 6px; }
   .quest-open { justify-self: start; }
-}
-
-@media (max-width: 640px) {
+  /* no text wrap on small screens: photo stacks above the text */
   .about-panel .prose > figure:first-child {
     float: none;
     max-width: 200px;
     margin: 0 auto 1.6rem;
   }
+}
+
+@media (max-width: 640px) {
   .topbar {
     height: auto;
     flex-wrap: wrap;
