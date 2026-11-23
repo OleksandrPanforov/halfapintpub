@@ -713,12 +713,6 @@ body.flash .topbar {
 @media (max-width: 820px) {
   .quest { grid-template-columns: 1fr; gap: 6px; }
   .quest-open { justify-self: start; }
-  /* no text wrap on small screens: photo stacks above the text */
-  .about-panel .prose > figure:first-child {
-    float: none;
-    max-width: 200px;
-    margin: 0 auto 1.6rem;
-  }
 }
 
 @media (max-width: 640px) {
@@ -1072,6 +1066,17 @@ body.flash .topbar {
   margin-top: 0.5rem;
   color: var(--gold);
   text-shadow: 0 0 10px rgba(255, 209, 102, 0.35);
+}
+
+/* Small screens: no text wrap — the photo stacks above the text.
+   Must come after the unconditional float rule above (same specificity,
+   later source order wins). */
+@media (max-width: 820px) {
+  .about-panel .prose > figure:first-child {
+    float: none;
+    max-width: 200px;
+    margin: 0 auto 1.6rem;
+  }
 }
 
 /* Scroll progress bar */
