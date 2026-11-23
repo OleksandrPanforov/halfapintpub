@@ -1,5 +1,6 @@
 {{ $p := .page }}
 {{ $active := .active }}
+{{ $css := resources.Get "css/home.css" | minify | fingerprint }}
 <!DOCTYPE html>
 <html lang="{{ $p.Lang }}">
 <head>
@@ -9,7 +10,7 @@
   <meta name="theme-color" content="#050508">
   <title>{{ .title }}</title>
   <link rel="icon" type="image/png" href="{{ site.Params.logo | relURL }}">
-  <link rel="stylesheet" href="{{ "css/home.css" | relURL }}">
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
