@@ -1046,6 +1046,7 @@ body.flash .topbar {
   grid-template-columns: 230px minmax(0, 1fr);
   column-gap: 1.8rem;
   align-items: start;
+  max-width: none;
 }
 
 .about-panel .prose > figure:first-child {
