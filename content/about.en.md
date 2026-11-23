@@ -3,7 +3,7 @@ title: "About"
 language: en
 ---
 
-{{< figure src="/images/about.jpeg" alt="Yours truly, the author of the blog." >}}
+{{< figure src="/images/about.jpeg" alt="Portrait photo of the blog's author" >}}
 
 ## ABOUT ME
 

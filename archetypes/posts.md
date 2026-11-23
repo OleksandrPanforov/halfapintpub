@@ -23,7 +23,7 @@ player_quote: ""
 **Key takeaway two.**
 {{< /takeaways >}}
 
-{{< figure src="/images/example.jpg" alt="Describe the image" caption="A caption for the figure." >}}
+{{< figure src="/images/example.jpg" alt="TODO: describe this image" caption="A caption for the figure." >}}
 
 Body text goes here.
 

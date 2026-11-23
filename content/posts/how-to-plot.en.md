@@ -134,7 +134,7 @@ Seth has an intention, a goal, a plan, skills, and a little characterization. An
 
 Now let's open some [online timeline-making tool](https://gitmind.com/timeline-maker.html) or Canva, and make something like this:
 
-{{< figure src="/images/image.en.png" alt="A timeline diagram showing events involving Seth and the dwarves between 998 and 1001" >}}
+{{< figure src="/images/image.en.png" alt="Timeline of events involving Seth and the dwarves, years 998 to 1001" >}}
 
 ### How Much Detail Should I Write?
 

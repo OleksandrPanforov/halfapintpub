@@ -4,7 +4,7 @@ date: 2022-10-27
 language: en
 hook: "That is why, in my opinion, if you need to maintain game-mechanical balance in a tabletop RPG, then you should not maintain it at all."
 hero_image: "/images/pawel-czerwinski-BP2RioglKXk-unsplash.jpg"
-hero_alt: "Red and blue swirling patterns in an abstract digital image"
+hero_alt: "Red and blue swirling abstract pattern"
 hero_caption: "If you cannot control chaos, try to comprehend it. The author accepts no responsibility for excessive contemplation of the abyss."
 player_quote: "*\"This is not balanced and is broken.\" - players, at various times.*"
 ---

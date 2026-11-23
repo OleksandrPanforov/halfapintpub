@@ -3,7 +3,7 @@ title: "Про сайт"
 language: uk
 ---
 
-{{< figure src="/images/about.jpeg" alt="Щиро ваш, автор блогу." >}}
+{{< figure src="/images/about.jpeg" alt="Фото автора блогу (портрет)" >}}
 
 ## ПРО МЕНЕ
 
